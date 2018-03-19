@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="concern")
+@Table(name="concern",indexes=@Index(columnList="title_concern"))
 public class ConcernEntity extends BaseEntity{
 
 	@Column(name="title_concern")

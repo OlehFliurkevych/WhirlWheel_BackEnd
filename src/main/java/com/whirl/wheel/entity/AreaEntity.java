@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
@@ -15,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="area")
+@Table(name="area",indexes=@Index(columnList="title_area"))
 public class AreaEntity extends BaseEntity{
 	
 	@Column(name="title_area")
