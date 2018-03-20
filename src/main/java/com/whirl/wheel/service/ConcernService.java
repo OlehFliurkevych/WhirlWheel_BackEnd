@@ -1,5 +1,7 @@
 package com.whirl.wheel.service;
 
+import java.util.List;
+
 import com.whirl.wheel.entity.ConcernEntity;
 
 public interface ConcernService {
@@ -10,5 +12,5 @@ public interface ConcernService {
 	
 	ConcernEntity findConcernByTitle(String title);
 	
-	ConcernEntity findConcernByCountry(String country);
+	List<ConcernEntity> findConcernByCountry(int id);
 }
