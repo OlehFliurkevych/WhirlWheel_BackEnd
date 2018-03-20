@@ -12,7 +12,8 @@ import com.whirl.wheel.entity.ConcernEntity;
 @Repository
 public interface ConcernRepository extends JpaRepository<ConcernEntity, Integer>{
 
-	@Query("SELECT * FROM ConcernEntity c WHERE c.country=:country")
+	
+	@Query("SELECT c FROM ConcernEntity c WHERE c.country=:country")
 	List<ConcernEntity> findConcernsByCountry(@Param("country")int id);
 	
 	@Query("SELECT c FROM ConcernEntity c WHERE c.titleConcern=:title")

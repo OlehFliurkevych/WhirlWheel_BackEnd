@@ -25,6 +25,9 @@ public class BrandEntity extends BaseEntity {
 	
 	private String description;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	@ManyToMany
 	@JoinTable(name="brand_country",joinColumns=@JoinColumn(name="brand_id"),inverseJoinColumns=@JoinColumn(name="country_id"))
 	private List<CountryEntity> counrties=new ArrayList<>();

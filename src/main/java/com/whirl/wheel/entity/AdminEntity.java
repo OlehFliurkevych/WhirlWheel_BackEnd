@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
 
+import com.whirl.wheel.enumeration.RoleEnum;
+
 import lombok.Data;
 
 @Data
@@ -17,7 +19,8 @@ public class AdminEntity extends BaseEntity{
 	
 	private String email;
 	
-	private int password;
+	private String password;
 	
+	private RoleEnum role;
 	
 }

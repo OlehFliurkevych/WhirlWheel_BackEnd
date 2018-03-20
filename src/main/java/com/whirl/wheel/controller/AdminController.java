@@ -11,18 +11,18 @@ public class AdminController {
 
 	@GetMapping("/signin")
 	public String showSingInFormForAdmin() {
-		return "signin-admin";
+		return "admin/signin-admin";
 	}
 	
 	
-	@GetMapping("registr")
+	@GetMapping("/registr")
 	public String showRegisterFormForAdmin() {
-		return "registr-admin";
+		return "admin/registr-admin";
 	}
 	
 	@PostMapping("/registr")
 	public String saveAdminToDatabase() {
-		return "signin-admin";
+		return "admin/signin-admin";
 	}
 	
 }

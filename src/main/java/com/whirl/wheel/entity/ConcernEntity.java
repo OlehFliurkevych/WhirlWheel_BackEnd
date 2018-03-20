@@ -23,6 +23,9 @@ public class ConcernEntity extends BaseEntity{
 	
 	private String description;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	@ManyToOne
 	@JoinColumn(name="country_id")
 	private CountryEntity country;

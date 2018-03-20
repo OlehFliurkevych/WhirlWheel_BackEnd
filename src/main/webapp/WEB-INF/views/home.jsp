@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Admin register page</title>
+<title>Home page</title>
 </head>
 <body>
-	
+	Welcome to Whirl Wheel!
 </body>
 </html>

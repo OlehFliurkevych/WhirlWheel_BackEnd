@@ -108,7 +108,7 @@
 		</dependency>
 
 		<!-- Apache Tiles -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
 			<version>3.0.8</version>
@@ -125,7 +125,7 @@
 			<artifactId>tiles-extras</artifactId>
 			<version>3.0.8</version>
 		</dependency>
-		-->
+		
 
 
 		<!-- Display Tag -->
@@ -135,7 +135,7 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- Spring Security 
+		<!-- Spring Security--> 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -151,7 +151,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-		-->
+		
 
 		<!-- Maven plugin -->
 		<dependency>

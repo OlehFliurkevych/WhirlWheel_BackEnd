@@ -20,6 +20,9 @@ public class ModelEntity extends BaseEntity{
 	
 	private String description;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private BrandEntity brand;
