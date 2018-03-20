@@ -36,7 +36,7 @@ public class ConcernServiceImpl implements ConcernService{
 
 	@Override
 	public List<ConcernEntity> findConcernByCountry(int id) {
-		return concernRepository.findConcernByCountry(id);
+		return concernRepository.findConcernsByCountry(id);
 	}
 
 	
