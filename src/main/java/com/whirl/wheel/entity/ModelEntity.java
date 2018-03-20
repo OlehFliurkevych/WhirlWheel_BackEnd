@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -19,7 +20,7 @@ public class ModelEntity extends BaseEntity{
 	
 	private String description;
 	
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private BrandEntity brand;
 	
