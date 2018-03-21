@@ -1,0 +1,21 @@
+.sl_link .text{
+    position:absolute;
+    bottom: 22%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0);
+    text-align: center;
+}
+
+.slick-prev{
+    left: 5px;
+}
+
+.slick-next{
+    right: 5px;
+}
+
+.sl_slide .text{
+    font-size: 13px;
+}
+

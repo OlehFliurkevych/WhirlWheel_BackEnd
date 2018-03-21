@@ -1,0 +1,233 @@
+@font-face{
+    font-family: "GilroyLight";
+    src: url(../fonts/Gilroy-Light.otf);
+}
+
+@font-face{
+    font-family: "GilroyExtraBold";
+    src: url(../fonts/gilroy-extrabold.otf);
+}
+
+h3{
+    color: black;
+    
+}
+
+.navbar{
+/*    border-top: 14px solid #2e2e2d ; */
+/*    background: linear-gradient(to bottom, rgba(46, 46, 45,1),rgba(46, 46, 45,0));*/
+    
+        
+    font-size: 16px;
+    
+}
+
+body{
+    font-family: "GilroyLight";
+    font-size: 16px;
+}
+
+
+a:hover,a:focus{
+    text-decoration: none;
+    outline: 0;             
+}
+
+.navbar-brand img{
+    height: 100%;
+}
+
+
+
+#myNavbar a{
+    color: white;
+}
+
+#myNavbar li:hover{
+    background: #f74d12;
+}
+
+#myNavbar {
+    font-family: "GilroyLight";
+}
+
+#headerwrap{
+    position:static;
+    font-family: "GilroyLight";
+    margin-top: -160px;
+    padding-top: 20px;
+    background-image: url(../img/headerwrap.jpg);
+    background-repeat: no-repeat;
+/*    background-image: url(../img/headerwrap.jpg) no-repeat center top;*/
+    text-align: center;
+    background-attachment: relative;
+    background-position: center;
+    min-height: 600px;
+    width: 100%;
+     background-size:100%;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    margin-right: 0px;
+    
+}
+
+#headerwrap .col-lg-8{
+    padding-left: 18%;
+    margin-top: 180px;
+     text-align: left;
+    color: #ffff;
+    font-size: 55px;
+       font-family: "GilroyExtraBold";
+}
+
+#headerwrap #wheel{
+    text-align: left;
+    color: #f74d12;
+    font-size: 55px;
+    font-family: "GilroyExtraBold";
+}
+
+#headerwrap .col-lg-4{
+    margin-top: 200px;
+}
+
+#headerwrap .col-lg-4 select{
+    border-radius: 3px;
+}
+
+.sl{
+    font-family: "GilroyLight";
+    min-height: 200px;
+    max-height: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+/*стилі для каруселі*/
+
+.sl_slide{
+    position: relative;
+    
+}
+
+.sl_link .sl_concern{
+    font-family: "GilroyExtraBold";
+    color: #f74d12;
+    font-size: 25px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0);
+}
+
+
+
+
+.sl_link .text{
+    position:absolute;
+    bottom: 35%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0);
+    text-align: center;
+    z-index: 1001;
+}
+
+
+
+.slick-prev , .slick-next{
+    width: 32px;
+    height: 32px;
+    z-index: 1001;
+}
+
+.slick-prev:before , .slick-next:before{
+    font-size: 35px;
+    text-shadow: 2px 2px 2px black;
+    margin-right: 50px;
+    z-index: 1001;
+}
+
+.slick-prev{
+    left: 20%;
+}
+
+.slick-next{
+    right: 20%;
+}
+
+
+#news{
+    font-family: "GilroyLight";
+    background-image: url(../img/audi.png);
+    min-height: 600px;
+    width: 100%;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    background-size:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+}
+
+
+
+#news .container-fluid .newsRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#news .container-fluid .row .col-md-3{
+    background-color: rgba(46, 46, 45,0.6);
+    color: white;
+    margin-top:100px;
+    margin-bottom: 100px;
+}
+
+#news p{
+    color: #f74d12;
+    margin-top: 10px;
+    font-size: 22px;
+    font-family: "GilroyExtraBold";
+}
+
+#news a{
+    text-decoration: none;
+    font-family: "GilroyLight";
+    color: #f74d12;
+}
+
+#concerns .emblem img{
+    width: 100%;
+}
+
+/*
+footer{
+    background-image: url(../img/footer2.jpg);
+    min-height: 300px;
+    width: 100%;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    background-size:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+}
+*/
+
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+.bg-lightgray
+{
+    font-size: 15px;
+    font-family: "GilroyLight";
+    color: white;
+    background-color: #2d2d2d;
+}
+
+
+
