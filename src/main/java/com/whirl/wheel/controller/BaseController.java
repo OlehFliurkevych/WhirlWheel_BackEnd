@@ -10,4 +10,10 @@ public class BaseController {
 	public String showHomePage() {
 		return "home";
 	}
+	
+
+	@GetMapping("/login")
+	public String showSingInFormForAdmin() {
+		return "admin/signin-admin";
+	}
 }

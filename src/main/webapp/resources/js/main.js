@@ -7,3 +7,9 @@ $('.sl').slick({
     dots: false,
     cssEase: 'linear'
 });
+
+$('.fliper-btn').click(function(){
+    $('.flip').find('.card').toggleClass('flipped');
+
+});
+
