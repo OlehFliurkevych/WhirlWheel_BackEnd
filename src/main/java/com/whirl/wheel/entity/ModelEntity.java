@@ -15,8 +15,8 @@ import lombok.Data;
 @Table(name="model", indexes=@Index(columnList="description"))
 public class ModelEntity extends BaseEntity{
 
-	@Column(name="title_brand")
-	private String titleBrand;
+	@Column(name="title_model")
+	private String titleModel;
 	
 	private String description;
 	

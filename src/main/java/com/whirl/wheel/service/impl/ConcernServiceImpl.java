@@ -11,7 +11,7 @@ import com.whirl.wheel.service.ConcernService;
 
 @Service
 public class ConcernServiceImpl implements ConcernService{
-	
+
 	private ConcernRepository concernRepository;
 
 	@Autowired
@@ -37,6 +37,11 @@ public class ConcernServiceImpl implements ConcernService{
 	@Override
 	public List<ConcernEntity> findConcernByCountry(int id) {
 		return concernRepository.findConcernsByCountry(id);
+	}
+
+	@Override
+	public List<ConcernEntity> findAllConcerns() {
+		return concernRepository.findAll();
 	}
 
 	

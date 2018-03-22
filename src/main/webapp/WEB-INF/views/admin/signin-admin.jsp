@@ -30,13 +30,14 @@
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
+        <label><input name="rememberMe" type="checkbox"> Remember me</label>
       </div>
     </div>
   </div>
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-success">Sign in</button>
+      <a href="${rootUrl}/admin/profile">Profile</a>
     </div>
   </div>
   </fieldset>

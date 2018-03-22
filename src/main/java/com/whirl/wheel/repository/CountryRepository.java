@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.whirl.wheel.entity.ModelEntity;
+import com.whirl.wheel.entity.CountryEntity;
 
 @Repository
-public interface ModelRepository extends JpaRepository<ModelEntity, Integer>{
+public interface CountryRepository extends JpaRepository<CountryEntity, Integer>{
 
-	@Query("SELECT m FROM ModelEntity m WHERE m.titleModel=:title")
-	ModelEntity findModelByTitle(@Param("title")String title);
+	@Query("SELECT a FROM AreaEntity a WHERE a.titleArea=:title")
+	CountryEntity findAreaByTitle(@Param("title")String title);
 }

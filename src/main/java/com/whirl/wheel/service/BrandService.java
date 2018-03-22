@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 import com.whirl.wheel.entity.BrandEntity;
 
 public interface BrandService {
+	
+	List<BrandEntity> findAllBrands();
 
 	void saveBrand(BrandEntity brand);
 	

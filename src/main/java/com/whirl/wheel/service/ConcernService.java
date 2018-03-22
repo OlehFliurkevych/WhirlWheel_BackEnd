@@ -5,6 +5,8 @@ import java.util.List;
 import com.whirl.wheel.entity.ConcernEntity;
 
 public interface ConcernService {
+	
+	List<ConcernEntity> findAllConcerns();
 
 	void saveConcern(ConcernEntity concern);
 	

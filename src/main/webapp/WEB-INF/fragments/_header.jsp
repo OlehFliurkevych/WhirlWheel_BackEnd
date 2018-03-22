@@ -10,9 +10,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="active" href="#">home</a></li>
-                        <li><a href="#">news</a></li>
-                        <li><a href="#">about us</a></li>
+                        <li><a class="active" href="${pageContext.request.contextPath}/home">home</a></li>
+                        <li><a href="${pageContext.request.contextPath}/news">news</a></li>
+                        <li><a href="${pageContext.request.contextPath}/aboutus">about us</a></li>
                         <li><a href=""><i class="fa fa-search"></i></a></li>
                     </ul>
                 </div>
