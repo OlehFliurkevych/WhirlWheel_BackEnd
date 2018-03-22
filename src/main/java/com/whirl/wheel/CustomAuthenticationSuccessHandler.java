@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter @Setter
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
 
-	private final String ADMIN_PAGE = "/admin";
+	private final String ADMIN_PAGE = "/admin/profile";
 	
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 

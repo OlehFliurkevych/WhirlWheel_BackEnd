@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.whirl.wheel.entity.AdminEntity;
+import com.whirl.wheel.enumeration.RoleEnum;
 import com.whirl.wheel.repository.AdminRepository;
 
 @SpringBootApplication
@@ -38,6 +39,7 @@ public class WhirlWheelSpringProjectApplication extends SpringBootServletInitial
 			entity.setAdminName(adminName);
 			entity.setEmail(adminEmail);
 			entity.setPassword(encoder.encode(adminPassword));
+			entity.setRole(RoleEnum.ROLE_ADMIN);
 			adminRepository.save(entity);
 		}
 	}

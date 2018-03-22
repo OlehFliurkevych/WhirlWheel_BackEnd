@@ -11,9 +11,19 @@ public class BaseController {
 		return "home";
 	}
 	
-
-	@GetMapping("/login")
-	public String showSingInFormForAdmin() {
-		return "admin/signin-admin";
+	
+	@GetMapping("/error")
+	public String showErrorPage() {
+		return "error";
+	}
+	
+	@GetMapping("/news")
+	public String showNews() {
+		return "news";
+	}
+	
+	@GetMapping("/aboutus")
+	public String showAboutUsPage() {
+		return "about-us";
 	}
 }

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
-	
-	@GetMapping("/registr")
-	public String showRegisterFormForAdmin() {
-		return "admin/registr-admin";
+
+	@GetMapping("/profile")
+	public String showProfile() {
+		return "admin/add-forms";
 	}
 	
-	@PostMapping("/registr")
-	public String saveAdminToDatabase() {
+	@GetMapping("/login")
+	public String showSingInFormForAdmin() {
 		return "admin/signin-admin";
 	}
 	
