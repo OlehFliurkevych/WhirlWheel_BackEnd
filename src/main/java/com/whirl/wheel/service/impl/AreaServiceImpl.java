@@ -26,20 +26,17 @@ public class AreaServiceImpl implements AreaService{
 
 	@Override
 	public List<AreaEntity> findAllAreas() {
-		// TODO Auto-generated method stub
-		return null;
+		return areaRepository.findAll();
 	}
 
 	@Override
 	public AreaEntity findAreaById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return areaRepository.findOne(id);
 	}
 
 	@Override
 	public AreaEntity findAreaByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		return areaRepository.findAreaByTitle(title);
 	}
 
 }

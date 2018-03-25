@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,8 +25,9 @@ public class ConcernEntity extends BaseEntity{
 	
 	private String description;
 	
-	@Column(name="image_path")
-	private String imagePath;
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="image_for_concern_id")
+	private UploadImageForConcern imageForConcern;
 	
 	@ManyToOne
 	@JoinColumn(name="country_id")

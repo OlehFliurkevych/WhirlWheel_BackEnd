@@ -5,12 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,8 +27,9 @@ public class BrandEntity extends BaseEntity {
 	
 	private String description;
 	
-	@Column(name="image_path")
-	private String imagePath;
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="image_for_brand_id")
+	private UploadImageForBrand imageForBrand;
 	
 	@ManyToMany
 	@JoinTable(name="brand_country",joinColumns=@JoinColumn(name="brand_id"),inverseJoinColumns=@JoinColumn(name="country_id"))
@@ -42,4 +45,5 @@ public class BrandEntity extends BaseEntity {
 	
 	@OneToMany(mappedBy="brand")
 	private List<ModelEntity> models=new ArrayList<>();
+	
 }
