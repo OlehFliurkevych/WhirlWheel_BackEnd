@@ -40,7 +40,23 @@ public class AdminController {
 	private UploadImageForBrandService imageForBrandService;
 	private UploadImageForNewsService imageForNewsService;
 	
-	
+	@Autowired
+	public AdminController(AdminService adminService, ConcernService concernService, BrandService brandService,
+			ModelService modelService, AreaService areaService, CountryService countryService,
+			UploadImageForConcernService imageforConcernService, UploadImageForModelService imageForModelService,
+			UploadImageForBrandService imageForBrandService, UploadImageForNewsService imageForNewsService) {
+		this.adminService = adminService;
+		this.concernService = concernService;
+		this.brandService = brandService;
+		this.modelService = modelService;
+		this.areaService = areaService;
+		this.countryService = countryService;
+		this.imageforConcernService = imageforConcernService;
+		this.imageForModelService = imageForModelService;
+		this.imageForBrandService = imageForBrandService;
+		this.imageForNewsService = imageForNewsService;
+	}
+
 	@GetMapping("/profile")
 	public String showProfile(Model model) {
 		model.addAttribute("title","Profile");
