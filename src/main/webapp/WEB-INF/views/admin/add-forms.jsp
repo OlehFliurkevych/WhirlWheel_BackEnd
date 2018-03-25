@@ -88,9 +88,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="imageForNews" for="" class="control-label col-md-3 col-sm-3">Image</form:label>
+                                                            <form:label path="imageForNews" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForNews" type="file" class="form-control"></form:input>
+                                                                <form:input path="imageForNews" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -142,7 +142,7 @@
                                                             <form:label path="imageForConcern" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForConcern" type="file" class="form-control"></form:input>
+                                                                <form:input path="imageForConcern" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -212,7 +212,7 @@
                                                             <form:label path="imageForBrand" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForBrand" type="file" class="form-control"></form:input>
+                                                                <form:input path="imageForBrand" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -260,10 +260,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="imageForModel" for="" class="control-label col-md-3 col-sm-3">Image
+                                                            <form:label path="imageForModel" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForModel" path="file" type="file" class="form-control"></form:input>
+                                                                <form:input path="imageForModel" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

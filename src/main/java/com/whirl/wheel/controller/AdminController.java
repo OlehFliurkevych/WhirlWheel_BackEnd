@@ -1,6 +1,8 @@
 package com.whirl.wheel.controller;
 
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.whirl.wheel.entity.AreaEntity;
 import com.whirl.wheel.entity.BrandEntity;
@@ -91,26 +95,41 @@ public class AdminController {
 		return "admin/add-forms";
 	}
 
-	
 	@PostMapping("/saveConcern")
 	public String saveConcerntoDB(
 			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
-			BindingResult result) {
+			@RequestParam("imageForConcern")MultipartFile imageForConcern,
+			BindingResult result) throws IOException {
 		if(result.hasErrors()) {
 			return "admin/add-forms";
 		}
-		concernService.saveConcern(concern);
+		
+		if(imageForConcern!=null&&imageForConcern.getSize()>0) {
+			UploadImageForConcern image=new UploadImageForConcern();
+			image.setFileName(imageForConcern.getOriginalFilename());
+			image.setFileData(imageForConcern.getBytes());
+			imageForConcernService.saveImageForConcern(image);
+			concernService.saveConcern(concern);
+		}
 		return "redirect:/admin/profile";
 	}
 
 	@PostMapping("/saveBrand")
 	public String saveBrandToDB(
 			@ModelAttribute("brandModel") @Valid BrandEntity brand,
-			BindingResult result) {
+			@RequestParam("imageForBrand")MultipartFile imageForBrand,
+			BindingResult result) throws IOException {
 		if(result.hasErrors()) {
 			return "admin/add-forms";
 		}
-		brandService.saveBrand(brand);
+		if(imageForBrand!=null&&imageForBrand.getSize()>0) {
+			UploadImageForBrand image=new UploadImageForBrand();
+			image.setFileName(imageForBrand.getOriginalFilename());
+			image.setFileData(imageForBrand.getBytes());
+			imageForBrandService.saveImageForBrand(image);
+			brandService.saveBrand(brand);
+		}
+		
 		return "redirect:/admin/profile";
 	}
 	
@@ -139,59 +158,183 @@ public class AdminController {
 	@PostMapping("/saveModel")
 	public String saveModelToDB(
 			@ModelAttribute("modelModel") @Valid ModelEntity model,
-			BindingResult result) {
+			@RequestParam("imageForModel")MultipartFile imageForModel,
+			BindingResult result) throws IOException {
 		if(result.hasErrors()) {
 			return "admin/add-forms";
 		}
-		modelService.saveModel(model);
+		if(imageForModel!=null&&imageForModel.getSize()>0) {
+			UploadImageForModel image=new UploadImageForModel();
+			image.setFileName(imageForModel.getOriginalFilename());
+			image.setFileData(imageForModel.getBytes());
+			imageForModelService.saveImageForModel(image);
+			modelService.saveModel(model);
+		}
 		return "redirect:/admin/profile";
 	}
 	
 	@PostMapping("/saveNews")
 	public String saveNewsToDB(
 			@ModelAttribute("newsModel") @Valid NewsEntity news,
-			BindingResult result) {
+			@RequestParam("imageForNews")MultipartFile imageForNews,
+			BindingResult result) throws IOException {
 		if(result.hasErrors()) {
 			return "admin/add-forms";
+		}
+		if(imageForNews!=null&&imageForNews.getSize()>0) {
+			UploadImageForNews image=new UploadImageForNews();
+			image.setFileName(imageForNews.getOriginalFilename());
+			image.setFileData(imageForNews.getBytes());
+			imageForNewsService.saveImageForNews(image);
+			newsService.saveNews(news);
 		}
 		return "redirect:/admin/profile";
 	}
 	
-	@PostMapping("/saveImageForConcern")
-	public String saveImageForConcern(
-			@ModelAttribute("imageForConcernModel") @Valid UploadImageForConcern imageForConcern,
-			BindingResult result) {
-		if(result.hasErrors()) {
-			return "admin/add-forms";
-		}
-		imageForConcernService.saveImageForConcern(imageForConcern);
-		return "redirect:/admin/profile";
-	}
-	
-	@PostMapping("/saveImageForBrand")
-	public String saveImageForBrand(
-			@ModelAttribute("imageForBrandModel") @Valid UploadImageForBrand imageForBrand,
-			BindingResult result) {
-		if(result.hasErrors()) {
-			return "admin/add-forms";
-		}
-		imageForBrandService.saveImageForBrand(imageForBrand);
-		return "redirect:/admin/profile";
-	}
-	
-	@PostMapping("/saveImageForModel")
-	public String saveImageForModel(
-			@ModelAttribute("imageForModelnModel") @Valid UploadImageForModel imageForModel,
-			BindingResult result) {
-		if(result.hasErrors()) {
-			return "admin/add-forms";
-		}
-		imageForModelService.saveImageForModel(imageForModel);
-		return "redirect:/admin/profile";
-	}
+//	@PostMapping("/saveImageForConcern")
+//	public String saveImageForConcern(
+//			@ModelAttribute("imageForConcernModel") @Valid UploadImageForConcern imageForConcern,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForConcernService.saveImageForConcern(imageForConcern);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForBrand")
+//	public String saveImageForBrand(
+//			@ModelAttribute("imageForBrandModel") @Valid UploadImageForBrand imageForBrand,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForBrandService.saveImageForBrand(imageForBrand);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForModel")
+//	public String saveImageForModel(
+//			@ModelAttribute("imageForModelnModel") @Valid UploadImageForModel imageForModel,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForModelService.saveImageForModel(imageForModel);
+//		return "redirect:/admin/profile";
+//	}
 	
 	@PostMapping("/saveImageForNews")
 	public String saveImageForNews(
+//	@PostMapping("/saveConcern")
+//	public String saveConcerntoDB(
+//			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
+//			@RequestParam("imageForConcern")UploadImageForConcern imageForConcern,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForConcernService.saveImageForConcern(imageForConcern);
+//		concernService.saveConcern(concern);
+//		return "redirect:/admin/profile";
+//	}
+//
+//	@PostMapping("/saveBrand")
+//	public String saveBrandToDB(
+//			@ModelAttribute("brandModel") @Valid BrandEntity brand,
+//			@RequestParam("imageForBrand")UploadImageForBrand imageForBrand,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForBrandService.saveImageForBrand(imageForBrand);
+//		brandService.saveBrand(brand);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveArea")
+//	public String saveAreaToDB(
+//			@ModelAttribute("countryModel") @Valid AreaEntity area,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		areaService.saveArea(area);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveCountry")
+//	public String saveCountryToDB(
+//			@ModelAttribute("countryModel") @Valid CountryEntity country,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		countryService.saveCountry(country);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveModel")
+//	public String saveModelToDB(
+//			@ModelAttribute("modelModel") @Valid ModelEntity model,
+//			@RequestParam("imageForModel")UploadImageForModel imageForModel,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForModelService.saveImageForModel(imageForModel);
+//		modelService.saveModel(model);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveNews")
+//	public String saveNewsToDB(
+//			@ModelAttribute("newsModel") @Valid NewsEntity news,
+//			@RequestParam("imageForNews")UploadImageForNews imageForNews,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		newsService.saveNews(news);
+//		imageForNewsService.saveImageForNews(imageForNews);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForConcern")
+//	public String saveImageForConcern(
+//			@ModelAttribute("imageForConcernModel") @Valid UploadImageForConcern imageForConcern,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForConcernService.saveImageForConcern(imageForConcern);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForBrand")
+//	public String saveImageForBrand(
+//			@ModelAttribute("imageForBrandModel") @Valid UploadImageForBrand imageForBrand,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForBrandService.saveImageForBrand(imageForBrand);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForModel")
+//	public String saveImageForModel(
+//			@ModelAttribute("imageForModelnModel") @Valid UploadImageForModel imageForModel,
+//			BindingResult result) {
+//		if(result.hasErrors()) {
+//			return "admin/add-forms";
+//		}
+//		imageForModelService.saveImageForModel(imageForModel);
+//		return "redirect:/admin/profile";
+//	}
+//	
+//	@PostMapping("/saveImageForNews")
+//	public String saveImageForNews(
 			@ModelAttribute("imageForNewsModel") @Valid UploadImageForNews imageForNews,
 			BindingResult result) {
 		if(result.hasErrors()) {
