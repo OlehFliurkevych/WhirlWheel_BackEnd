@@ -22,6 +22,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
 	
+	<definition name="*/*/*" extends="base">
+		<put-attribute name="title" value="Title" />
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
 	<!-- Custom error page
 	<definition name="error" template="/WEB-INF/views/404.jsp" />
  	-->

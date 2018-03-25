@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/taglib.jsp" %>
+
 <div class="container-fluid">
             <div data-spy="scroll" style="position: relative;" data-target="#MyScrollspy" data-offset="20" class="container-fluid">
                 <div class="row">
@@ -126,8 +127,8 @@
                                                         <div class="form-group">
                                                             <form:label path="country" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select path="country" class="form-control" name="" id="">
-                                									<form:option value="NONE" disabled selected>Select country</form:option>
+                                                                <form:select path="country" class="form-control">
+                                									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
                                										 <form:options items="${listCountries}"></form:options>
                            										 </form:select>
                                                             </div>
@@ -179,7 +180,7 @@
                                                             <form:label path="concern" for="" class="control-label col-md-3 col-sm-3">Concern</form:label>
                                                             <div class="col-md-6 col-sm-6">
                                                                 <form:select path="concern" title="" class="form-control" name="" id="">
-                                									<form:option value="NONE" disabled selected>Select concern</form:option>
+                                									<%-- <form:option value="undefined" disabled selected>Select concern</form:option> --%>
                                 									<form:options items="${listConcerns}"></form:options>
                            										 </form:select>
                                                             </div>
@@ -188,7 +189,7 @@
                                                             <form:label path="" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-md-6 col-sm-6">
                                                                 <form:select path="counrties" class="form-control" name="" id="">
-                                										<form:option value="NONE" disabled selected>Select country</form:option>
+                                										<%-- <form:option value="undefined" disabled selected>Select country</form:option> --%>
                                 										<form:options items="${listCountries}"></form:options>
                             									</form:select>
                                                             </div>
@@ -197,7 +198,7 @@
                                                             <form:label path="areas" class="control-label col-md-3 col-sm-3">Area</form:label>
                                                             <div class="col-md-6 col-sm-6">
                                                                 <form:select path="areas" class="form-control" name="" id="">
-                                									<form:option value="NONE" disabled selected>Select area</form:option>
+                                									<%-- <form:option value="undefined" disabled selected>Select area</form:option> --%>
                                										<form:options items="${listAreas}"></form:options>
                             									</form:select>
                                                             </div>
@@ -248,7 +249,7 @@
                                                             <form:label path="brand" class="control-label col-md-3 col-sm-3">Brand</form:label>
                                                             <div class="col-md-6 col-sm-6">
                                                                 <form:select path="brand" class="form-control" name="" id="">
-                                									<form:option value="NONE" disabled selected>Select brand</form:option>
+                                									<%-- <form:option value="undefined"  disabled selected>Select brand</form:option> --%>
                                 									<form:options items="${listBrands}"></form:options>
                             									</form:select>
                                                             </div>
