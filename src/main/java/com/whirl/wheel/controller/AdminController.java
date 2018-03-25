@@ -49,6 +49,17 @@ public class AdminController {
 		
 		return "admin/add-forms";
 	}
+
+	@GetMapping("/profile")
+	public String showProfile() {
+		return "admin/add-forms";
+	}
+	
+	@GetMapping("/login")
+	public String showSingInFormForAdmin() {
+		return "admin/signin-admin";
+
+	}
 	
 
 	
