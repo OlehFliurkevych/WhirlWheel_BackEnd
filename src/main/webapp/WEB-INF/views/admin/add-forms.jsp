@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/taglib.jsp" %>
 <div class="container-fluid">
             <div data-spy="scroll" style="position: relative;" data-target="#MyScrollspy" data-offset="20" class="container-fluid">
                 <div class="row">
@@ -63,39 +64,42 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveNews" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="newsModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Headlind </label>
+                                                            <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter news headlings" name="title">
+                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings" name="title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Description</label>
+                                                            <form:label path="description" for="" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about news"></textarea>
+                                                                <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Link</label>
+                                                            <form:label path="link" for="" class="control-label col-md-3 col-sm-3">Link</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Enter link"></textarea>
+                                                                <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Image
-                                                        </label>
+                                                            <form:label path="imageForNews" for="" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="file" type="file" class="form-control">
+                                                                <form:input path="imageForNews" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
-                                                            </div>
+                                                                <button ttpe="submit" class="btn btn-success">Add</button>
+                                                            </div> 
                                                         </div>
 
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,43 +112,46 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveConcern" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="concernModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Title </label>
+                                                            <form:label path="titleConcern" for="" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter concern title" name="title">
+                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Country</label>
+                                                            <form:label path="country" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <select class="form-control" name="" id="">
-                                <option disabled selected>Select country</option>
-                                <option value="">Germany</option>
-                                <option value="">USA</option>
-                            </select>
+                                                                <form:select path="country" class="form-control" name="" id="">
+                                									<form:option value="NONE" disabled selected>Select country</form:option>
+                               										 <form:options items="${listCountries}"></form:options>
+                           										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Description</label>
+                                                            <form:label path="description" for="" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></textarea>
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Image
-                                                        </label>
+                                                            <form:label path="imageForConcern" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="file" type="file" class="form-control">
+                                                                <form:input path="imageForConcern" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
+                                                                <button type="submit" class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
 
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,64 +164,63 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveBrand" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="brandModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Title </label>
+                                                            <form:label path="titleBrand" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter brand title" name="title">
+                                                                <form:input path="titleBrand" type="text" class="form-control" placeholder="Enter brand title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Concern</label>
+                                                            <form:label path="concern" for="" class="control-label col-md-3 col-sm-3">Concern</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <select title="" class="form-control" name="" id="">
-                                <option disabled selected>Select concern</option>
-                                <option value="">Toyota group</option>
-                                <option value="">GM</option>
-                                <option value="">Renault group</option>
-                            </select>
+                                                                <form:select path="concern" title="" class="form-control" name="" id="">
+                                									<form:option value="NONE" disabled selected>Select concern</form:option>
+                                									<form:options items="${listConcerns}"></form:options>
+                           										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Country</label>
+                                                            <form:label path="" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <select class="form-control" name="" id="">
-                                <option disabled selected>Select country</option>
-                                <option value="">Germany</option>
-                                <option value="">USA</option>
-                            </select>
+                                                                <form:select path="counrties" class="form-control" name="" id="">
+                                										<form:option value="NONE" disabled selected>Select country</form:option>
+                                										<form:options items="${listCountries}"></form:options>
+                            									</form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Area</label>
+                                                            <form:label path="areas" class="control-label col-md-3 col-sm-3">Area</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <select class="form-control" name="" id="">
-                                <option disabled selected>Select area</option>
-                                <option value="">Europa</option>
-                                <option value="">Asia</option>
-                                <option value="">Africa</option>
-                            </select>
+                                                                <form:select path="areas" class="form-control" name="" id="">
+                                									<form:option value="NONE" disabled selected>Select area</form:option>
+                               										<form:options items="${listAreas}"></form:options>
+                            									</form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Description</label>
+                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about brand"></textarea>
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about brand"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Image
-                                                        </label>
+                                                            <form:label path="imageForBrand" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="file" type="file" class="form-control">
+                                                                <form:input path="imageForBrand" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
+                                                                <button type="submit" class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -227,43 +233,45 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveModel" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="modelModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Title </label>
+                                                            <form:label path="titleModel" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter model title" name="title">
+                                                                <form:input path="titleModel" type="text" class="form-control" placeholder="Enter model title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Brand</label>
+                                                            <form:label path="brand" class="control-label col-md-3 col-sm-3">Brand</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <select class="form-control" name="" id="">
-                                <option disabled selected>Select brand</option>
-                                <option value="">Peugout</option>
-                                <option value="">Volvo</option>
-                                <option value="">Renault</option>
-                            </select>
+                                                                <form:select path="brand" class="form-control" name="" id="">
+                                									<form:option value="NONE" disabled selected>Select brand</form:option>
+                                									<form:options items="${listBrands}"></form:options>
+                            									</form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Description</label>
+                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about model"></textarea>
+                                                                <form:textarea path="description" class="form-control" cols="30" rows="10" placeholder="Enter description about model"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Image
-                                                        </label>
+                                                            <form:label path="imageForModel" for="" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="file" type="file" class="form-control">
+                                                                <form:input path="imageForModel" path="file" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
+                                                                <button type="submit" class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -276,20 +284,23 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveCountry" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		modelAttribute="countryModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Title </label>
+                                                            <form:label path="titleCountry" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter country title" name="title">
+                                                                <form:input class="form-control" placeholder="Enter country title" path="titleCountry"></form:input>
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
+                                                                <button type="submit"  class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -302,19 +313,22 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form action="" class="form-horizontal">
+                                                    <form:form action="${rootURL}/admin/saveArea" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		modelAttribute="areaModel">
                                                         <div class="form-group">
-                                                            <label for="" class="control-label col-md-3 col-sm-3">Title </label>
+                                                            <form:label path="titleArea" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <input type="text" class="form-control" placeholder="Enter area title" name="title">
+                                                                <form:input type="text" class="form-control" placeholder="Enter area title" path="titleArea"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button class="btn btn-success">Add</button>
+                                                                <button type="submit" class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,5 +347,3 @@
                 </div>
             </div>
         </div>
-=======
-<p>Add form</p>

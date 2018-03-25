@@ -11,7 +11,7 @@
 					</c:if>
 <form:form 
 	class="form-horizontal" 
-	action="/admin/login"
+	action="/login"
 	method="POST"
 	>
 <fieldset>

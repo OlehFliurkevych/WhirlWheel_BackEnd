@@ -20,21 +20,6 @@ public class BaseController {
 	}
 	
 	@GetMapping("/error")
-	public String showErrorPage() {
-		return "error";
-	}
-	
-	@GetMapping("/news")
-	public String showNews() {
-		return "news";
-	}
-	
-	@GetMapping("/aboutus")
-	public String showAboutUsPage() {
-		return "about-us";
-	}
-	
-	@GetMapping("/error")
 	public String showErrorPage(Model model) {
 		model.addAttribute("title","Error");
 		return "error";

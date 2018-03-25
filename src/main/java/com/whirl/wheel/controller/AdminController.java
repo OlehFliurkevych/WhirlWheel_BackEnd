@@ -1,20 +1,34 @@
 package com.whirl.wheel.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.whirl.wheel.entity.AreaEntity;
+import com.whirl.wheel.entity.BrandEntity;
 import com.whirl.wheel.entity.ConcernEntity;
-import com.whirl.wheel.repository.ConcernRepository;
+import com.whirl.wheel.entity.CountryEntity;
+import com.whirl.wheel.entity.ModelEntity;
+import com.whirl.wheel.entity.NewsEntity;
+import com.whirl.wheel.entity.UploadImageForBrand;
+import com.whirl.wheel.entity.UploadImageForConcern;
+import com.whirl.wheel.entity.UploadImageForModel;
+import com.whirl.wheel.entity.UploadImageForNews;
 import com.whirl.wheel.service.AdminService;
 import com.whirl.wheel.service.AreaService;
 import com.whirl.wheel.service.BrandService;
 import com.whirl.wheel.service.ConcernService;
 import com.whirl.wheel.service.CountryService;
 import com.whirl.wheel.service.ModelService;
+import com.whirl.wheel.service.NewsService;
 import com.whirl.wheel.service.UploadImageForBrandService;
 import com.whirl.wheel.service.UploadImageForConcernService;
 import com.whirl.wheel.service.UploadImageForModelService;
@@ -35,7 +49,8 @@ public class AdminController {
 	private ModelService modelService;
 	private AreaService areaService;
 	private CountryService countryService;
-	private UploadImageForConcernService imageforConcernService;
+	private NewsService newsService;
+	private UploadImageForConcernService imageForConcernService;
 	private UploadImageForModelService imageForModelService;
 	private UploadImageForBrandService imageForBrandService;
 	private UploadImageForNewsService imageForNewsService;
@@ -51,7 +66,7 @@ public class AdminController {
 		this.modelService = modelService;
 		this.areaService = areaService;
 		this.countryService = countryService;
-		this.imageforConcernService = imageforConcernService;
+		this.imageForConcernService = imageforConcernService;
 		this.imageForModelService = imageForModelService;
 		this.imageForBrandService = imageForBrandService;
 		this.imageForNewsService = imageForNewsService;
@@ -61,22 +76,128 @@ public class AdminController {
 	public String showProfile(Model model) {
 		model.addAttribute("title","Profile");
 		model.addAttribute("concernModel",new ConcernEntity());
+		model.addAttribute("brandModel",new BrandEntity());
+		model.addAttribute("modelModel",new ModelEntity());
+		model.addAttribute("countryModel",new CountryEntity());
+		model.addAttribute("areaModel",new AreaEntity());
+		model.addAttribute("newsModel",new NewsEntity());
+		model.addAttribute("imageForConcernModel",new UploadImageForConcern());
+		model.addAttribute("imageForBrandModel",new UploadImageForBrand());
+		model.addAttribute("imageForModelnModel",new UploadImageForModel());
+		model.addAttribute("imageForNewsModel",new UploadImageForNews());
 		model.addAttribute("listConcerns",concernService.findAllConcerns());
-		
+		model.addAttribute("listBrands",brandService.findAllBrands());
+		model.addAttribute("listModels",modelService.findAllModels());
 		return "admin/add-forms";
 	}
 
-	@GetMapping("/profile")
-	public String showProfile() {
-		return "admin/add-forms";
+	
+	@PostMapping("/saveConcern")
+	public String saveConcerntoDB(
+			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		concernService.saveConcern(concern);
+		return "redirect:/admin/profile";
+	}
+
+	@PostMapping("/saveBrand")
+	public String saveBrandToDB(
+			@ModelAttribute("brandModel") @Valid BrandEntity brand,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		brandService.saveBrand(brand);
+		return "redirect:/admin/profile";
 	}
 	
-	@GetMapping("/login")
-	public String showSingInFormForAdmin() {
-		return "admin/signin-admin";
-
+	@PostMapping("/saveArea")
+	public String saveAreaToDB(
+			@ModelAttribute("countryModel") @Valid AreaEntity area,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		areaService.saveArea(area);
+		return "redirect:/admin/profile";
 	}
 	
-
+	@PostMapping("/saveCountry")
+	public String saveCountryToDB(
+			@ModelAttribute("countryModel") @Valid CountryEntity country,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		countryService.saveCountry(country);
+		return "redirect:/admin/profile";
+	}
 	
+	@PostMapping("/saveModel")
+	public String saveModelToDB(
+			@ModelAttribute("modelModel") @Valid ModelEntity model,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		modelService.saveModel(model);
+		return "redirect:/admin/profile";
+	}
+	
+	@PostMapping("/saveNews")
+	public String saveNewsToDB(
+			@ModelAttribute("newsModel") @Valid NewsEntity news,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		return "redirect:/admin/profile";
+	}
+	
+	@PostMapping("/saveImageForConcern")
+	public String saveImageForConcern(
+			@ModelAttribute("imageForConcernModel") @Valid UploadImageForConcern imageForConcern,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		imageForConcernService.saveImageForConcern(imageForConcern);
+		return "redirect:/admin/profile";
+	}
+	
+	@PostMapping("/saveImageForBrand")
+	public String saveImageForBrand(
+			@ModelAttribute("imageForBrandModel") @Valid UploadImageForBrand imageForBrand,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		imageForBrandService.saveImageForBrand(imageForBrand);
+		return "redirect:/admin/profile";
+	}
+	
+	@PostMapping("/saveImageForModel")
+	public String saveImageForModel(
+			@ModelAttribute("imageForModelnModel") @Valid UploadImageForModel imageForModel,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		imageForModelService.saveImageForModel(imageForModel);
+		return "redirect:/admin/profile";
+	}
+	
+	@PostMapping("/saveImageForNews")
+	public String saveImageForNews(
+			@ModelAttribute("imageForNewsModel") @Valid UploadImageForNews imageForNews,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		imageForNewsService.saveImageForNews(imageForNews);
+		return "redirect:/admin/profile";
+	}
 }
