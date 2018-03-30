@@ -1,21 +1,38 @@
 package com.whirl.wheel.controller;
 
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.Transformation;
+import com.cloudinary.utils.ObjectUtils;
+import com.whirl.wheel.editor.AreaEditor;
+import com.whirl.wheel.editor.BrandEditor;
+import com.whirl.wheel.editor.ConcernEditor;
+import com.whirl.wheel.editor.CountryEditor;
+import com.whirl.wheel.editor.ModelEditor;
+import com.whirl.wheel.editor.NewsEditor;
 import com.whirl.wheel.entity.AreaEntity;
 import com.whirl.wheel.entity.BrandEntity;
 import com.whirl.wheel.entity.ConcernEntity;
@@ -42,11 +59,6 @@ import com.whirl.wheel.service.UploadImageForNewsService;
 @RequestMapping("/admin")
 public class AdminController {
 	
-//	@InitBinder("user")
-//	protected void initBinder(WebDataBinder binder) {
-//		binder.registerCustomEditor(User.class, new UserEditor(userService));
-//	}
-	
 	private AdminService adminService;
 	private ConcernService concernService;
 	private BrandService brandService;
@@ -58,6 +70,18 @@ public class AdminController {
 	private UploadImageForModelService imageForModelService;
 	private UploadImageForBrandService imageForBrandService;
 	private UploadImageForNewsService imageForNewsService;
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(ConcernEntity.class, new ConcernEditor(concernService));
+		binder.registerCustomEditor(BrandEntity.class, new BrandEditor(brandService));
+		binder.registerCustomEditor(ModelEntity.class, new ModelEditor(modelService));
+		binder.registerCustomEditor(CountryEntity.class, new CountryEditor(countryService));
+		binder.registerCustomEditor(AreaEntity.class, new AreaEditor(areaService));
+		binder.registerCustomEditor(NewsEntity.class, new NewsEditor(newsService));
+	}
+	
+	
 	
 	@Autowired
 	public AdminController(AdminService adminService, ConcernService concernService, BrandService brandService,
@@ -77,7 +101,15 @@ public class AdminController {
 	}
 
 	@GetMapping("/profile")
-	public String showProfile(Model model) {
+	public String showProfile(Model model) throws IOException {
+		
+		Map config=new HashMap<>();
+		config.put("cloud_name","whirl-wheel" );
+		config.put("api_key","784981521285313");
+		config.put("api_secret", "LvX9nxFswIYBInU6HwxxFi4tGQM");
+		Cloudinary cloudinary=new Cloudinary(config);
+		cloudinary.uploader().upload("nissan_group.jpg", ObjectUtils.asMap("ransformation",new Transformation().width(800).height(600)
+				.crop("limit")));
 		model.addAttribute("title","Profile");
 		model.addAttribute("concernModel",new ConcernEntity());
 		model.addAttribute("brandModel",new BrandEntity());
@@ -106,7 +138,7 @@ public class AdminController {
 			return "admin/add-forms";
 		}
 		
-		if(imageForConcern!=null&&imageForConcern.getSize()>0) {
+		if(!imageForConcern.isEmpty()&&imageForConcern!=null) {
 			UploadImageForConcern image=new UploadImageForConcern();
 			image.setFileName(imageForConcern.getOriginalFilename());
 			image.setFileData(imageForConcern.getBytes());

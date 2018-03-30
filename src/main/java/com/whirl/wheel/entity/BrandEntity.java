@@ -31,19 +31,21 @@ public class BrandEntity extends BaseEntity {
 	@JoinColumn(name="image_for_brand_id")
 	private UploadImageForBrand imageForBrand;
 	
-	@ManyToMany
-	@JoinTable(name="brand_country",joinColumns=@JoinColumn(name="brand_id"),inverseJoinColumns=@JoinColumn(name="country_id"))
-	private List<CountryEntity> counrties=new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="country_id")
+	private CountryEntity country;
+
 
 	@ManyToOne
 	@JoinColumn(name="concern_id")
 	private ConcernEntity concern;
 
-	@ManyToMany
-	@JoinTable(name="brand_area",joinColumns=@JoinColumn(name="brand_id"),inverseJoinColumns=@JoinColumn(name="area_id"))
-	private List<AreaEntity> areas=new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="area_id")
+	private AreaEntity area;
 	
 	@OneToMany(mappedBy="brand")
 	private List<ModelEntity> models=new ArrayList<>();
+	
 	
 }

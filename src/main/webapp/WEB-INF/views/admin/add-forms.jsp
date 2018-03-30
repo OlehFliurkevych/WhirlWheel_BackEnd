@@ -73,17 +73,17 @@
                                                         <div class="form-group">
                                                             <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings" name="title"></form:input>
+                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="description" for="" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="link" for="" class="control-label col-md-3 col-sm-3">Link</form:label>
+                                                            <form:label path="link" class="control-label col-md-3 col-sm-3">Link</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea>
                                                             </div>
@@ -91,7 +91,7 @@
                                                         <div class="form-group">
                                                             <form:label path="imageForNews" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForNews" multiple="multiple" type="file" class="form-control"></form:input>
+                                                                <form:input modelAttribute="imageForNewsModel" path="imageForNews" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -127,9 +127,11 @@
                                                         <div class="form-group">
                                                             <form:label path="country" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select path="country" class="form-control">
+                                                                <form:select   path="country" class="form-control">
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                               										 <form:options items="${listCountries}"></form:options>
+                                									<c:forEach items="${listCountries}" var="country">
+                                										<form:option path="country" value="${country.titleCountry}"></form:option>
+                                									</c:forEach>							 
                            										 </form:select>
                                                             </div>
                                                         </div>
@@ -179,27 +181,33 @@
                                                         <div class="form-group">
                                                             <form:label path="concern" for="" class="control-label col-md-3 col-sm-3">Concern</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:select path="concern" title="" class="form-control" name="" id="">
+                                                                <form:select path="concern" class="form-control">
                                 									<%-- <form:option value="undefined" disabled selected>Select concern</form:option> --%>
-                                									<form:options items="${listConcerns}"></form:options>
+                                									<c:forEach items="${listConcerns}" var="concern">
+                                										<form:option path="concern" value="${concern.titleConcern}"></form:option>
+                                									</c:forEach>
                            										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:select path="counrties" class="form-control" name="" id="">
-                                										<%-- <form:option value="undefined" disabled selected>Select country</form:option> --%>
-                                										<form:options items="${listCountries}"></form:options>
-                            									</form:select>
+                                                               <form:select   path="country" class="form-control">
+                                									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
+                                									<c:forEach items="${listCountries}" var="country">
+                                										<form:option path="country" value="${country.titleCountry}"></form:option>
+                                									</c:forEach>							 
+                           										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="areas" class="control-label col-md-3 col-sm-3">Area</form:label>
+                                                            <form:label path="area" class="control-label col-md-3 col-sm-3">Area</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:select path="areas" class="form-control" name="" id="">
+                                                                <form:select path="area" class="form-control" name="" id="">
                                 									<%-- <form:option value="undefined" disabled selected>Select area</form:option> --%>
-                               										<form:options items="${listAreas}"></form:options>
+                               										<c:forEach items="${listAreas}" var="a">
+                               											<form:option value="${a.titleArea}"></form:option>
+                               										</c:forEach>
                             									</form:select>
                                                             </div>
                                                         </div>
@@ -250,7 +258,9 @@
                                                             <div class="col-md-6 col-sm-6">
                                                                 <form:select path="brand" class="form-control" name="" id="">
                                 									<%-- <form:option value="undefined"  disabled selected>Select brand</form:option> --%>
-                                									<form:options items="${listBrands}"></form:options>
+                                									<c:forEach items="${listBrands}" var="b">
+                                										<form:option path="brand" value="${b.titleBrand}"></form:option>
+                                									</c:forEach>
                             									</form:select>
                                                             </div>
                                                         </div>

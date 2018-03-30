@@ -26,6 +26,26 @@
 
 	<dependencies>
 	
+		<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-core -->
+		<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-taglib -->
+		<dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-taglib</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-core -->
+			<dependency>
+   				<groupId>com.cloudinary</groupId>
+    			<artifactId>cloudinary-core</artifactId>
+    			<version>1.2.2</version>
+			</dependency>
+        
+	
 		
 		<dependency>
 			<groupId>org.projectlombok</groupId>

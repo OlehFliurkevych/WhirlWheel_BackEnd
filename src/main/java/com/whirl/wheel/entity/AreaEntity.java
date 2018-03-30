@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,7 +23,6 @@ public class AreaEntity extends BaseEntity{
 	@Column(name="title_area")
 	private String titleArea;
 	
-	@ManyToMany
-	@JoinTable(name="brand_area",joinColumns=@JoinColumn(name="area_id"),inverseJoinColumns=@JoinColumn(name="brand_id"))
+	@OneToMany(mappedBy="area")
 	private List<BrandEntity> brands=new ArrayList<>();
 }

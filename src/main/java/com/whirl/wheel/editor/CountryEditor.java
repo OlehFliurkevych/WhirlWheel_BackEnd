@@ -10,7 +10,6 @@ public class CountryEditor extends PropertyEditorSupport{
 	private final CountryService countryService;
 
 	public CountryEditor(CountryService countryService) {
-		super();
 		this.countryService = countryService;
 	}
 

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -21,7 +22,6 @@ public class CountryEntity extends BaseEntity{
 	@Column(name="title_country")
 	private String titleCountry;
 	
-	@ManyToMany
-	@JoinTable(name="brand_country",joinColumns=@JoinColumn(name="country_id"),inverseJoinColumns=@JoinColumn(name="brand_id"))
+	@OneToMany(mappedBy="country")
 	private List<BrandEntity> brands=new ArrayList<>();
 }
