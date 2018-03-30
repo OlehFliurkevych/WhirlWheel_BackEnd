@@ -6,9 +6,9 @@
                 <input type="file" name="file" /><br/><br/>
                 <input type="submit" value="Submit" />
             </form:form>
-            <%-- <div th:if="${message}">
+           <%--  <div th:if="${message}">
                 <h2 th:text="${message}"/><br/><br/>
-            </div> --%>
+            </div>  --%>
             <%-- <div th:if="${imageurl} != null"> --%>
                 <img src="${imageurl}" />
                 <hr />

@@ -16,10 +16,6 @@ import com.cloudinary.Transformation;
 public class CloudinaryConfig {
 
 	private Cloudinary cloudinary;
-
-//	private final static String KEY="784981521285313";
-//	private final static String SECRET="LvX9nxFswIYBInU6HwxxFi4tGQM";
-//	private final static String CLOUDNAME="whirl-wheel";
 	
 	@Autowired
 	public CloudinaryConfig(@Value("${cloudinary.apikey}") String key,
@@ -31,23 +27,6 @@ public class CloudinaryConfig {
 			cloudinary.config.apiKey=key;
 }
 	
-//	@Autowired
-//	public CloudinaryConfig() {
-//		this.cloudinary = Singleton.getCloudinary();
-//		cloudinary.config.cloudName=CLOUDNAME;
-//		cloudinary.config.apiSecret=SECRET;
-//		cloudinary.config.apiKey=KEY;
-//	}
-	
-//	@Autowired
-//	public CloudinaryConfig() {
-//		cloudinary = Singleton.getCloudinary();
-//		cloudinary.config.cloudName=CLOUDNAME;
-//		cloudinary.config.apiSecret=SECRET;
-//		cloudinary.config.apiKey=KEY;
-//	}
-	
-
 	public Map upload(Object file,Map options) {
 		try{
             return cloudinary.uploader().upload(file, options);

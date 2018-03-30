@@ -19,7 +19,7 @@ public class NewsEntity extends BaseEntity{
 	
 	private String description;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="image_for_news_id")
-	private UploadImageForNews imageForNews;
+	@OneToOne
+	@JoinColumn(name="image_id")
+	private UploadImageEntity imageForNews;
 }

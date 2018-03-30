@@ -27,9 +27,9 @@ public class BrandEntity extends BaseEntity {
 	
 	private String description;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="image_for_brand_id")
-	private UploadImageForBrand imageForBrand;
+	@OneToOne
+	@JoinColumn(name="image_id")
+	private UploadImageEntity imageForBrand;
 	
 	@ManyToOne
 	@JoinColumn(name="country_id")

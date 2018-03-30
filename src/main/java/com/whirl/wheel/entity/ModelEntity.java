@@ -22,9 +22,9 @@ public class ModelEntity extends BaseEntity{
 	
 	private String description;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="image_for_model_id")
-	private UploadImageForModel imageForModel;
+	@OneToOne
+	@JoinColumn(name="image_id")
+	private UploadImageEntity imageForModel;
 	
 	@ManyToOne
 	@JoinColumn(name="brand_id")
