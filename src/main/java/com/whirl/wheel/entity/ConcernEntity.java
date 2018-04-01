@@ -29,6 +29,9 @@ public class ConcernEntity extends BaseEntity{
 	@JoinColumn(name="image_id")
 	private UploadImageEntity imageForConcern;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 //	@OneToOne(fetch=FetchType.LAZY)
 //	@JoinColumn(name="image_for_concern_id")
 //	private UploadImageForConcern imageForConcern;

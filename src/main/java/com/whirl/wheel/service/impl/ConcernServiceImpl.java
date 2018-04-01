@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.whirl.wheel.entity.ConcernEntity;
 import com.whirl.wheel.repository.ConcernRepository;
@@ -13,10 +14,13 @@ import com.whirl.wheel.service.ConcernService;
 public class ConcernServiceImpl implements ConcernService{
 
 	private ConcernRepository concernRepository;
+	
+	private CloudinaryServiceImpl cloudinaryService;
 
 	@Autowired
-	public ConcernServiceImpl(ConcernRepository concernRepository) {
+	public ConcernServiceImpl(ConcernRepository concernRepository, CloudinaryServiceImpl cloudinaryService) {
 		this.concernRepository = concernRepository;
+		this.cloudinaryService = cloudinaryService;
 	}
 
 	@Override
@@ -42,6 +46,14 @@ public class ConcernServiceImpl implements ConcernService{
 	@Override
 	public List<ConcernEntity> findAllConcerns() {
 		return concernRepository.findAll();
+	}
+
+	@Override
+	public void uploadImage(MultipartFile file, int concernId) {
+		ConcernEntity concern=concernRepository.getOne(concernId);
+		String path=cloudinaryService.uploadImage(file, "/concern/"+concernId);
+		concern.setImagePath(path);
+		concernRepository.save(concern);
 	}
 
 	

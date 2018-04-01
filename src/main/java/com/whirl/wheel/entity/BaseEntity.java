@@ -1,5 +1,7 @@
 package com.whirl.wheel.entity;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,4 +20,7 @@ public class BaseEntity {
 	
 	@Column(name="is_deleted")
 	private Boolean isDeleted;
+	
+	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private Timestamp createdAt;
 }

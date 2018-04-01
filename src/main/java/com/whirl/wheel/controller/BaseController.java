@@ -20,31 +20,31 @@ import com.whirl.wheel.CloudinaryConfig;
 public class BaseController {
 	
 	@Autowired
-	CloudinaryConfig cloudinary;
+	private CloudinaryConfig cloudinaryC;
 	
-	@GetMapping("/upload")
-	public String uploadForm() {
-		return "form";
-	}
 	
-	@PostMapping("/upload")
-    public String singleImageUpload(@RequestParam("file") MultipartFile file, 
-    		RedirectAttributes redirectAttributes,
-    		Model model){
-		if (file.isEmpty()){
-            model.addAttribute("message","Please select a file to upload");
-            return "upload";
-        }
-        try {
-            Map uploadResult =  cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
-            model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
-            model.addAttribute("imageurl", uploadResult.get("url"));
-        } catch (IOException e){
-            e.printStackTrace();
-            model.addAttribute("message", "Sorry I can't upload that!");
-        }
-        return "redirect:/upload";
-    }
+//	 @GetMapping("/upload")
+//	    public String uploadForm(){
+//	        return "form";
+//	    }
+//	    @PostMapping("/upload")
+//	    public String singleImageUpload(@RequestParam("file") MultipartFile file, 
+//	    		RedirectAttributes redirectAttributes,
+//	    		Model model){
+//	        if (file.isEmpty()){
+//	            model.addAttribute("message","Please select a file to upload");
+//	            return "form";
+//	        }
+//	        try {
+//	            Map uploadResult =  cloudinaryC.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+//	            model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+//	            model.addAttribute("imageurl", uploadResult.get("url"));
+//	        } catch (IOException e){
+//	            e.printStackTrace();
+//	            model.addAttribute("message", "Sorry I can't upload that!");
+//	        }
+//	        return "redirect:/upload";
+//	    }
 
 	@GetMapping({"/","/home"})
 	public String showHomePage(Model model) {

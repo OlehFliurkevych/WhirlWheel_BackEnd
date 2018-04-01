@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,10 +24,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
+import com.whirl.wheel.CloudinaryConfig;
 import com.whirl.wheel.editor.AreaEditor;
 import com.whirl.wheel.editor.BrandEditor;
 import com.whirl.wheel.editor.ConcernEditor;
@@ -40,10 +43,7 @@ import com.whirl.wheel.entity.CountryEntity;
 import com.whirl.wheel.entity.ModelEntity;
 import com.whirl.wheel.entity.NewsEntity;
 import com.whirl.wheel.entity.UploadImageEntity;
-import com.whirl.wheel.entity.UploadImageForBrand;
-import com.whirl.wheel.entity.UploadImageForConcern;
-import com.whirl.wheel.entity.UploadImageForModel;
-import com.whirl.wheel.entity.UploadImageForNews;
+import com.whirl.wheel.repository.ConcernRepository;
 import com.whirl.wheel.service.AdminService;
 import com.whirl.wheel.service.AreaService;
 import com.whirl.wheel.service.BrandService;
@@ -51,15 +51,13 @@ import com.whirl.wheel.service.ConcernService;
 import com.whirl.wheel.service.CountryService;
 import com.whirl.wheel.service.ModelService;
 import com.whirl.wheel.service.NewsService;
-import com.whirl.wheel.service.UploadImageForBrandService;
-import com.whirl.wheel.service.UploadImageForConcernService;
-import com.whirl.wheel.service.UploadImageForModelService;
-import com.whirl.wheel.service.UploadImageForNewsService;
 import com.whirl.wheel.service.UploadImageService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+
 	
 	private AdminService adminService;
 	private ConcernService concernService;
@@ -80,12 +78,10 @@ public class AdminController {
 		binder.registerCustomEditor(NewsEntity.class, new NewsEditor(newsService));
 	}
 	
-	
-	
 	@Autowired
-	public AdminController(AdminService adminService, ConcernService concernService, BrandService brandService,
-			ModelService modelService, AreaService areaService, CountryService countryService, NewsService newsService,
-			UploadImageService imageService) {
+	public AdminController(AdminService adminService, ConcernService concernService,
+			BrandService brandService, ModelService modelService, AreaService areaService,
+			CountryService countryService, NewsService newsService, UploadImageService imageService) {
 		this.adminService = adminService;
 		this.concernService = concernService;
 		this.brandService = brandService;
@@ -99,16 +95,10 @@ public class AdminController {
 
 
 
+
 	@GetMapping("/profile")
 	public String showProfile(Model model) throws IOException {
 		
-		Map config=new HashMap<>();
-		config.put("cloud_name","whirl-wheel" );
-		config.put("api_key","784981521285313");
-		config.put("api_secret", "LvX9nxFswIYBInU6HwxxFi4tGQM");
-		Cloudinary cloudinary=new Cloudinary(config);
-		cloudinary.uploader().upload("nissan_group.jpg", ObjectUtils.asMap("ransformation",new Transformation().width(800).height(600)
-				.crop("limit")));
 		model.addAttribute("title","Profile");
 		model.addAttribute("concernModel",new ConcernEntity());
 		model.addAttribute("brandModel",new BrandEntity());
@@ -124,25 +114,82 @@ public class AdminController {
 		model.addAttribute("listAreas",areaService.findAllAreas());
 		return "admin/add-forms";
 	}
+	
+	
+	
+	@GetMapping("/upload")
+	public String uploadForm(Model model) {
+		model.addAttribute("imageModel",new UploadImageEntity());
+		return "form";
+	}
+	
+	@PostMapping("/upload")
+    public String singleImageUpload(@RequestParam("file") MultipartFile file,
+    		RedirectAttributes redirectAttributes,
+    		Model model,
+    		@ModelAttribute("imageModel")UploadImageEntity image,
+    		BindingResult result){
+//		if(result.hasErrors()) {
+//			return "form";
+//		}
+//		if (file.isEmpty()){
+//            model.addAttribute("message","Please select a file to upload");
+//            return "form";
+//        }
+//        try {
+//        	image=new UploadImageEntity();
+//        	 System.out.println(file.getOriginalFilename());
+//             
+//             
+//            Map<?,?> uploadResult =  cloudinaryConfig.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+//            model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+//            model.addAttribute("imageurl", uploadResult.get("url"));
+//            String path=(String)uploadResult.get("url");
+//            image.setImageName(path);
+//            image.setDescription(decription);
+//            imageService.saveImage(image);
+//            System.out.println(file.getOriginalFilename());
+//            System.out.println(uploadResult.get("url"));
+//           
+//        } catch (IOException e){
+//            e.printStackTrace();
+//            model.addAttribute("message", "Sorry I can't upload that!");
+//        }
+        return "redirect:/admin/upload";
+    }
 
 	@PostMapping("/saveConcern")
 	public String saveConcerntoDB(
+			@RequestParam("imageForConcern") MultipartFile imageForConcern,
 			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
-			@RequestParam("imageForConcern")MultipartFile imageForConcern,
-			BindingResult result) throws IOException {
-		if(result.hasErrors()) {
-			return "admin/add-forms";
+			Model model,
+			RedirectAttributes redirectAttributes,
+			BindingResult result,
+			UploadImageEntity image) throws IOException {
+		concernService.uploadImage(imageForConcern, 1);
+//		
+//		if (imageForConcern.isEmpty()){
+//            model.addAttribute("message","Please select a file to upload");
+//            return "admin/add-forms";
+//        }
+//        try {
+//        	image=new UploadImageEntity();
+//            Map<?,?> uploadResult =  cloudinaryConfig.upload(imageForConcern.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+//            model.addAttribute("message", "You successfully uploaded '" + imageForConcern.getOriginalFilename() + "'");
+//            model.addAttribute("imageurl", uploadResult.get("url"));
+//            String path=(String)uploadResult.get("url");
+//            image.setImageName(path);
+//            imageService.saveImage(image);
+//            concern.setCountry(country);
+//            concern.setDescription(description);
+//            concern.setTitleConcern(titleConcern);
+//            concernService.saveConcern(concern);
+//        } catch (IOException e){
+//            e.printStackTrace();
+//            model.addAttribute("message", "Sorry I can't upload that!");
+//        }
+        return "redirect:/admin/profile";
 		}
-		
-//		if(!imageForConcern.isEmpty()&&imageForConcern!=null) {
-//			UploadImageForConcern image=new UploadImageForConcern();
-//			image.setFileName(imageForConcern.getOriginalFilename());
-//			image.setFileData(imageForConcern.getBytes());
-//			imageForConcernService.saveImageForConcern(image);
-//			concernService.saveConcern(concern);
-//		}
-		return "redirect:/admin/profile";
-	}
 
 	@PostMapping("/saveBrand")
 	public String saveBrandToDB(
