@@ -57,7 +57,6 @@ import com.whirl.wheel.service.UploadImageService;
 @RequestMapping("/admin")
 public class AdminController {
 	
-
 	
 	private AdminService adminService;
 	private ConcernService concernService;
@@ -129,6 +128,7 @@ public class AdminController {
     		Model model,
     		@ModelAttribute("imageModel")UploadImageEntity image,
     		BindingResult result){
+		
 //		if(result.hasErrors()) {
 //			return "form";
 //		}
@@ -164,9 +164,20 @@ public class AdminController {
 			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
 			Model model,
 			RedirectAttributes redirectAttributes,
-			BindingResult result,
-			UploadImageEntity image) throws IOException {
-		concernService.uploadImage(imageForConcern, 1);
+			BindingResult result) throws IOException {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		if(imageForConcern!=null&&imageForConcern.getSize()>0) {
+			UploadImageEntity image=new UploadImageEntity();
+			image.setFileData(imageForConcern.getBytes());
+			image.setImageName(imageForConcern.getOriginalFilename());
+			imageService.saveImage(image);
+			concern.setImageForConcern(image);
+			concernService.saveConcern(concern);
+		}
+		
+//		concernService.uploadImage(imageForConcern, 1);
 //		
 //		if (imageForConcern.isEmpty()){
 //            model.addAttribute("message","Please select a file to upload");

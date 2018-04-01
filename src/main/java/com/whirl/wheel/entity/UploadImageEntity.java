@@ -2,6 +2,7 @@ package com.whirl.wheel.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,6 +15,10 @@ public class UploadImageEntity extends BaseEntity{
 
 	@Column(name="image_name")
 	private String imageName;
+	
+	@Lob
+	@Column(name="file_data", length=1000000)
+	private byte[] fileData;
 	
 	@OneToOne(mappedBy="imageForConcern")
 	private ConcernEntity concern;

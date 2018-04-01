@@ -18,9 +18,7 @@ import com.whirl.wheel.CloudinaryConfig;
 
 @Controller
 public class BaseController {
-	
-	@Autowired
-	private CloudinaryConfig cloudinaryC;
+
 	
 	
 //	 @GetMapping("/upload")
