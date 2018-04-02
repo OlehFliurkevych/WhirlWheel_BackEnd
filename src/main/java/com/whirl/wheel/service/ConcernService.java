@@ -18,5 +18,5 @@ public interface ConcernService {
 	
 	List<ConcernEntity> findConcernByCountry(int id);
 	
-//	void uploadImage(MultipartFile file,int concernId);
+	void uploadImage(MultipartFile file,int concernId);
 }

@@ -30,6 +30,8 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import com.whirl.wheel.CloudinaryConfig;
+import com.whirl.wheel.domain.ConcernRequest;
+import com.whirl.wheel.domain.ImageRequest;
 import com.whirl.wheel.editor.AreaEditor;
 import com.whirl.wheel.editor.BrandEditor;
 import com.whirl.wheel.editor.ConcernEditor;
@@ -43,6 +45,7 @@ import com.whirl.wheel.entity.CountryEntity;
 import com.whirl.wheel.entity.ModelEntity;
 import com.whirl.wheel.entity.NewsEntity;
 import com.whirl.wheel.entity.UploadImageEntity;
+import com.whirl.wheel.mapper.ConcernMapper;
 import com.whirl.wheel.repository.ConcernRepository;
 import com.whirl.wheel.service.AdminService;
 import com.whirl.wheel.service.AreaService;
@@ -99,7 +102,7 @@ public class AdminController {
 	public String showProfile(Model model) throws IOException {
 		
 		model.addAttribute("title","Profile");
-		model.addAttribute("concernModel",new ConcernEntity());
+		model.addAttribute("concernModelRequest",new ConcernRequest());
 		model.addAttribute("brandModel",new BrandEntity());
 		model.addAttribute("modelModel",new ModelEntity());
 		model.addAttribute("countryModel",new CountryEntity());
@@ -123,12 +126,18 @@ public class AdminController {
 	}
 	
 	@PostMapping("/upload")
-    public String singleImageUpload(@RequestParam("file") MultipartFile file,
+    public String singleImageUpload(@RequestParam("fileData") MultipartFile file,
     		RedirectAttributes redirectAttributes,
     		Model model,
     		@ModelAttribute("imageModel")UploadImageEntity image,
-    		BindingResult result){
+    		BindingResult result) throws IOException{
 		
+		if(file!=null&&file.getSize()>0) {
+			image=new UploadImageEntity();
+			image.setFileData(file.getBytes());
+			image.setImageName(file.getOriginalFilename());
+			imageService.saveImage(image);
+		}
 //		if(result.hasErrors()) {
 //			return "form";
 //		}
@@ -160,23 +169,18 @@ public class AdminController {
 
 	@PostMapping("/saveConcern")
 	public String saveConcerntoDB(
-			@RequestParam("imageForConcern") MultipartFile imageForConcern,
-			@ModelAttribute("concernModel") @Valid ConcernEntity concern,
+			@RequestParam("image") ImageRequest imageForConcern,
+			@ModelAttribute("concernModelRequest") @Valid ConcernRequest concern,
 			Model model,
 			RedirectAttributes redirectAttributes,
-			BindingResult result) throws IOException {
+			BindingResult result,
+			UploadImageEntity image) throws IOException {
 		if(result.hasErrors()) {
-			return "admin/add-forms";
+			return "form";
 		}
-		if(imageForConcern!=null&&imageForConcern.getSize()>0) {
-			UploadImageEntity image=new UploadImageEntity();
-			image.setFileData(imageForConcern.getBytes());
-			image.setImageName(imageForConcern.getOriginalFilename());
-			imageService.saveImage(image);
-			concern.setImageForConcern(image);
-			concernService.saveConcern(concern);
-		}
-		
+			concern=ConcernMapper.concernToEntity(imageForConcern, concern);
+		return "redirect:/admin/profile";
+	}
 //		concernService.uploadImage(imageForConcern, 1);
 //		
 //		if (imageForConcern.isEmpty()){
@@ -199,8 +203,7 @@ public class AdminController {
 //            e.printStackTrace();
 //            model.addAttribute("message", "Sorry I can't upload that!");
 //        }
-        return "redirect:/admin/profile";
-		}
+        
 
 	@PostMapping("/saveBrand")
 	public String saveBrandToDB(

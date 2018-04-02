@@ -117,15 +117,15 @@
                                                     		class="form-horizontal"
                                                     		method="POST"
                                                     		enctype="multipart/form-data"
-                                                    		modelAttribute="concernModel">
+                                                    		modelAttribute="concernModelRequest">
                                                         <div class="form-group">
-                                                            <form:label path="titleConcern" for="" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <form:label path="title" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                                <form:input path="title" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="country" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
+                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:select   path="country" class="form-control">
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
@@ -136,21 +136,21 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="description" for="" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label name="imageForConcern" path="imageForConcern" class="control-label col-md-3 col-sm-3">Image
+                                                            <form:label path="image" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input name="imageForConcern" path="imageForConcern" type="file" class="form-control"></form:input>
+                                                                <form:input path="image" name="image" multiple="multiple" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <form:button type="submit" value="Add" class="btn btn-success">Add</form:button>
+                                                                <button type="submit" class="btn btn-success">Add</button>
                                                             </div>
                                                         </div>
 

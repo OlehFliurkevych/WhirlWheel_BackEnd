@@ -2,10 +2,16 @@ package com.whirl.wheel.domain;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import lombok.Data;
+import com.whirl.wheel.entity.UploadImageEntity;
 
-@Data
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@Getter @Setter
 public class ImageRequest {
 
-	private MultipartFile file;
+	private MultipartFile image;
 }

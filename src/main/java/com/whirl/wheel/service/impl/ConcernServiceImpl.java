@@ -15,12 +15,12 @@ public class ConcernServiceImpl implements ConcernService{
 
 	private ConcernRepository concernRepository;
 	
-//	private CloudinaryServiceImpl cloudinaryService;
+	private CloudinaryServiceImpl cloudinaryService;
 
 	@Autowired
 	public ConcernServiceImpl(ConcernRepository concernRepository) {
 		this.concernRepository = concernRepository;
-//		this.cloudinaryService = cloudinaryService;
+		this.cloudinaryService = cloudinaryService;
 	}
 
 	@Override
@@ -49,13 +49,13 @@ public class ConcernServiceImpl implements ConcernService{
 	}
 
 	
-//	@Override
-//	public void uploadImage(MultipartFile file, int concernId) {
-//		ConcernEntity concern=concernRepository.getOne(concernId);
-//		String path=cloudinaryService.uploadFile(file, "/concern/"+concernId);
-//		concern.setImagePath(path);
-//		concernRepository.save(concern);
-//	}
+	@Override
+	public void uploadImage(MultipartFile file, int concernId) {
+		ConcernEntity concern=concernRepository.getOne(concernId);
+		String path=cloudinaryService.uploadFile(file, "/concern/"+concernId);
+		concern.setImagePath(path);
+		concernRepository.save(concern);
+	}
 
 	
 }

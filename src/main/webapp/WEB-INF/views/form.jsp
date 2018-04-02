@@ -4,8 +4,7 @@
             action="/admin/upload" 
             enctype="multipart/form-data"
             modelAttribute="imageModel">
-                <input type="file" path="file"  name="file"></input><br/><br/>
-                <form:input type="text" path="description" name="description"></form:input>
+                <form:input type="file" path="fileData"  name="fileData"></form:input><br/><br/>
                 <form:button type="submit" value="Submit">Add</form:button>
                 
             </form:form>

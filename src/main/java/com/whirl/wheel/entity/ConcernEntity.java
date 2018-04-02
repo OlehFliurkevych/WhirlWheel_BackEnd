@@ -25,9 +25,9 @@ public class ConcernEntity extends BaseEntity{
 	
 	private String description;
 	
-	@OneToOne
-	@JoinColumn(name="image_id")
-	private UploadImageEntity imageForConcern;
+//	@OneToOne
+//	@JoinColumn(name="image_id")
+//	private UploadImageEntity imageForConcern;
 	
 	@Column(name="image_path")
 	private String imagePath;
