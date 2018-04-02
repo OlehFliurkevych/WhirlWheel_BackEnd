@@ -36,8 +36,140 @@
                         <div id="panelView" class="panel panel-primary">
                             <div class="panel-heading"><i class="fas fa-list-alt"></i> View</div>
                             <div class="panel-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
+                                <div class="container-fluid">
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableNews">Table of news</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableNews" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <table class="table table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Headlind</th>
+                                                                <th>Description</th>
+                                                                <th>Link</th>
+                                                                <th>Id Image</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>1</th>
+                                                                <th>Some head</th>
+                                                                <th>Some description</th>
+                                                                <th>Link</th>
+                                                                <th>Id Image</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>2</th>
+                                                                <th>Some head2</th>
+                                                                <th>Some description2</th>
+                                                                <th>Link2</th>
+                                                                <th>Id Image2</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>3</th>
+                                                                <th>Some head3</th>
+                                                                <th>Some description3</th>
+                                                                <th>Link3</th>
+                                                                <th>Id Image3</th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableConcerns">Table of concerns</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableConcerns" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Country</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Id 1</th>
+                                                                <th>Title1</th>
+                                                                <th>Country1</th>
+                                                                <th>Description1</th>
+                                                                <th>Path to image1</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Id3</th>
+                                                                <th>Title3</th>
+                                                                <th>Country3</th>
+                                                                <th>Descriptio3</th>
+                                                                <th>Path to imag3</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Id4</th>
+                                                                <th>Title4</th>
+                                                                <th>Country4</th>
+                                                                <th>Description4</th>
+                                                                <th>Path to image4</th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableBrands">Table of brands</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableBrands" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableModels">Table of models</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableModels" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableAreas">Table of area's</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableAreas" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#tableCountries">Table of countries</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableCountries" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div id="panelAdd" class="panel panel-primary">
@@ -350,8 +482,148 @@
                         <div id="panelDelete" class="panel panel-primary">
                             <div class="panel-heading"> <i class="fa fa-minus-square"></i> Delete</div>
                             <div class="panel-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
+                                <div class="container-fluid">
+                                    <div class="panel-group" id="accordion2">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableNewsDelete">Table of news</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableNewsDelete" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <table class="table table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Headlind</th>
+                                                                <th>Description</th>
+                                                                <th>Link</th>
+                                                                <th>Id Image</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>1</th>
+                                                                <th>Some head</th>
+                                                                <th>Some description</th>
+                                                                <th>Link</th>
+                                                                <th>Id Image</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>2</th>
+                                                                <th>Some head2</th>
+                                                                <th>Some description2</th>
+                                                                <th>Link2</th>
+                                                                <th>Id Image2</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>3</th>
+                                                                <th>Some head3</th>
+                                                                <th>Some description3</th>
+                                                                <th>Link3</th>
+                                                                <th>Id Image3</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableConcernsDelete">Table of concerns</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableConcernsDelete" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Country</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Id 1</th>
+                                                                <th>Title1</th>
+                                                                <th>Country1</th>
+                                                                <th>Description1</th>
+                                                                <th>Path to image1</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Id3</th>
+                                                                <th>Title3</th>
+                                                                <th>Country3</th>
+                                                                <th>Descriptio3</th>
+                                                                <th>Path to imag3</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Id4</th>
+                                                                <th>Title4</th>
+                                                                <th>Country4</th>
+                                                                <th>Description4</th>
+                                                                <th>Path to image4</th>
+                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableBrandsDelete">Table of brands</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableBrandsDelete" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableModelsDelete">Table of models</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableModelsDelete" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableAreasDelete">Table of area's</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableAreasDelete" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#tableCountriesDelete">Table of countries</a>
+                                                </h4>
+                                            </div>
+                                            <div id="tableCountriesDelete" class="panel-collapse collapse">
+                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
