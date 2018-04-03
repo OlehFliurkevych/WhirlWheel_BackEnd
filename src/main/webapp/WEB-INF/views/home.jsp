@@ -10,34 +10,14 @@
                             <div class="form-group">
                                 <div class="col-sm-10">
                                     <select class="selectConcern form-control input-sm" name="" id="selconcern">
-                              <option value="">Concern</option>
-                               <option value="toyotaCorp">Toyota Motor Cornoration</option>
-                               <option value="gm">General Motors Corporation</option>
-                               <option value="vag">Volkswagen AG</option>
-                               <option value="fordCorp">Ford Motor Company</option>
-                               <option value="hondaCorp">Honda Motor Company</option>
-                               <option value="nissanCorp">Nissan Motors</option>
-                               <option value="chryslerCorp">Chrysler LLC</option>
-                               <option value="renaultCorp">Renault S.A.</option>
+                              			<option value="">Concern</option>
                            </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-10">
                                     <select class="selectBrand form-control input-sm" name="" id="selbrand">
-                               <option value="">Brand</option>
-                               <option value="bmw">BMW</option>
-                               <option value="ford">Ford</option>
-                               <option value="toyota">Toyota</option>
-                               <option value="renault">Renault</option>
-                               <option value="peugout">Peugout</option>
-                               <option value="audi">Audi</option>
-                               <option value="fiat">Fiat</option>
-                               <option value="vaz">Vaz</option>
-                               <option value="citroen">Citroen</option>
-                               <option value="infiniti">Infiniti</option>
-                               <option value="volvo">Volvo</option>
-                               <option value="volkswagen">VW</option>
+                               			<option value="">Brand</option>
                            </select>
                                 </div>
                             </div>
@@ -45,17 +25,6 @@
                                 <div class="col-sm-10">
                                     <select name="" class="selectModel form-control input-sm" id="">
                                <option value="">Model</option>
-                               <option value="scenic">Scenic</option>
-                               <option value="kangoo">Kangoo</option>
-                               <option value="a4">A4</option>
-                               <option value="307">307</option>
-                               <option value="xc90">XC90</option>
-                               <option value="v60">V60</option>
-                               <option value="doblo">Doblo</option>
-                               <option value="kuga">Kuga</option>
-                               <option value="x5">X5</option>
-                               <option value="golf">Golf</option>
-                               <option value="passat">Passat</option>
                            </select>
                                 </div>
                             </div>

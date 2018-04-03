@@ -85,29 +85,34 @@ public class ConcernController {
 
 	@GetMapping("/form")
 	public String formConcern(Model model) {
-		model.addAttribute("concernModelRequest",new ConcernRequest());
-//		model.addAttribute("listCountries",countryService.findAllCountries());
-		return "concern/concern";
+		model.addAttribute("concernModel",new ConcernEntity());
+//		model.addAttribute("concernModelRequest",new ConcernRequest());
+		model.addAttribute("listCountries",countryService.findAllCountries());
+		return "concern/add-concern";
 	}
 	
+	
+//	@PostMapping("/save")
+//	public String saveConcernToDB(@ModelAttribute("concernModelRequest")ConcernRequest concern,
+//			@RequestParam("image")ImageRequest image) {
+//		ConcernEntity entity=ConcernMapper.concernToEntity(image, concern);
+//		System.out.println("went to method");
+//		concernService.saveConcern(entity);
+//		System.out.println("save concern");
+//		concernService.uploadImage(image.getImage(), entity.getId());
+//		System.out.println("upload image!END!");
+//		return "redirect:/concern/form";
+//	}
+	
+		
 	@PostMapping("/save")
-	public String savaConcernToDB(
-			@ModelAttribute("concernModelRequest") ConcernRequest concern,
-			@RequestParam("image") ImageRequest image
-			) throws IOException {
-		ConcernEntity concernEntity=ConcernMapper.concernToEntity(concern.getImage(), concern);
-		concernService.uploadImage(image.getImage(), 1);
-		concernService.saveConcern(concernEntity);
-		
-		
-//		if(image!=null&&image.getSize()>0) {
-//			UploadImageEntity entity=new UploadImageEntity();
-//			entity.setImageName(image.getOriginalFilename());
-//			entity.setFileData(image.getBytes());
-//			concern.setImageForConcern(entity);
-//			concernService.saveConcern(concern);
-//		}
-		
+	public String saveConcernToDB(@ModelAttribute("concernModel")ConcernEntity concern,
+			@RequestParam("image")MultipartFile image) {
+		System.out.println("went to method");
+		concernService.saveConcern(concern);
+		System.out.println("save concern");
+		concernService.uploadImage(image, concern.getId());
+		System.out.println("upload image!END!");
 		return "redirect:/concern/form";
 	}
 }

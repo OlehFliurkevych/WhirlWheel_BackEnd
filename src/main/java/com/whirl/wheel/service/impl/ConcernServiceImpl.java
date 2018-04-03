@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.whirl.wheel.entity.ConcernEntity;
 import com.whirl.wheel.repository.ConcernRepository;
+import com.whirl.wheel.service.CloudinaryService;
 import com.whirl.wheel.service.ConcernService;
 
 @Service
@@ -15,10 +16,11 @@ public class ConcernServiceImpl implements ConcernService{
 
 	private ConcernRepository concernRepository;
 	
-	private CloudinaryServiceImpl cloudinaryService;
+	private CloudinaryService cloudinaryService;
 
+	
 	@Autowired
-	public ConcernServiceImpl(ConcernRepository concernRepository) {
+	public ConcernServiceImpl(ConcernRepository concernRepository, CloudinaryService cloudinaryService) {
 		this.concernRepository = concernRepository;
 		this.cloudinaryService = cloudinaryService;
 	}

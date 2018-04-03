@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.whirl.wheel.domain.ConcernRequest;
 import com.whirl.wheel.domain.ImageRequest;
@@ -83,7 +84,7 @@ public class AdminController {
 	public String showProfile(Model model) {
 		
 		model.addAttribute("title","Profile");
-/*		model.addAttribute("concernModelRequest",new ConcernRequest());
+		model.addAttribute("concernModel",new ConcernEntity());
 		model.addAttribute("brandModel",new BrandEntity());
 		model.addAttribute("modelModel",new ModelEntity());
 		model.addAttribute("countryModel",new CountryEntity());
@@ -94,24 +95,38 @@ public class AdminController {
 		model.addAttribute("listBrands",brandService.findAllBrands());
 		model.addAttribute("listModels",modelService.findAllModels());
 		model.addAttribute("listCountries",countryService.findAllCountries());
-		model.addAttribute("listAreas",areaService.findAllAreas());*/
+		model.addAttribute("listAreas",areaService.findAllAreas());
 		return "admin/add-forms";
 	}
 	
 	
-	@GetMapping("/upload")
-	public String showDoorm(Model model) {
-		model.addAttribute("imageModelRequest",new ImageRequest());
-		return "form";
-	}
-	
-	@PostMapping("/upload")
-	public String save(@ModelAttribute("image")ImageRequest image) {
-		UploadImageEntity entity=ImageMapper.imageToEntity(image);
-		imageService.uploadImage(image.getImage(),3);
-		imageService.saveImage(entity);
-		return "redirect:/admin/upload";
-	}
+//	@GetMapping("/upload")
+//	public String showDoorm(Model model) {
+////		model.addAttribute("imageModelRequest",new ImageRequest());
+//		model.addAttribute("imageModel",new UploadImageEntity());
+//		return "form";
+//	}
+//	
+//	@PostMapping("/upload")
+//	public String save(@ModelAttribute("image")UploadImageEntity image) {
+////		UploadImageEntity entity=ImageMapper.imageToEntity(image);
+//		System.out.println("1");
+////		imageService.saveImage(entity);
+//		System.out.println("2");
+////		imageService.uploadImage(image.getImage(),image.getId());
+//		System.out.println("3");
+//		return "redirect:/admin/upload";
+//	}
 
+	@PostMapping("/saveConcern")
+	public String saveConcern(@ModelAttribute("concernModel")ConcernEntity concern,
+			@RequestParam("image")MultipartFile image) {
+		System.out.println("went to method");
+		concernService.saveConcern(concern);
+		System.out.println("save concern");
+		concernService.uploadImage(image, concern.getId());
+		System.out.println("upload image!END!");
+		return "redirect:/admin/profile";
+	}
 
 }

@@ -274,9 +274,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="imageForNews" class="control-label col-md-3 col-sm-3">Image</form:label>
+                                                            <form:label path="imagePath" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input modelAttribute="imageForNewsModel" path="imageForNews" multiple="multiple" type="file" class="form-control"></form:input>
+                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -302,11 +302,11 @@
                                                     		class="form-horizontal"
                                                     		method="POST"
                                                     		enctype="multipart/form-data"
-                                                    		modelAttribute="concernModelRequest">
+                                                    		modelAttribute="concernModel">
                                                         <div class="form-group">
-                                                            <form:label path="title" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="title" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -327,10 +327,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="image" for="image" class="control-label col-md-3 col-sm-3">Image
+                                                            <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input name="image" type="file" class="form-control">
+                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -352,68 +352,47 @@
                                             <div class="row">
 
                                                 <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootURL}/admin/saveBrand" 
+                                                    <form:form action="${pageContext.request.contextPath}/concern/save" 
                                                     		class="form-horizontal"
                                                     		method="POST"
                                                     		enctype="multipart/form-data"
-                                                    		modelAttribute="brandModel">
+                                                    		modelAttribute="concernModel">
                                                         <div class="form-group">
-                                                            <form:label path="titleBrand" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:input path="titleBrand" type="text" class="form-control" placeholder="Enter brand title"></form:input>
+                                                            <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <form:label path="concern" for="" class="control-label col-md-3 col-sm-3">Concern</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:select path="concern" class="form-control">
-                                									<%-- <form:option value="undefined" disabled selected>Select concern</form:option> --%>
-                                									<c:forEach items="${listConcerns}" var="concern">
-                                										<form:option path="concern" value="${concern.titleConcern}"></form:option>
-                                									</c:forEach>
-                           										 </form:select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="" for="" class="control-label col-md-3 col-sm-3">Country</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                               <form:select   path="country" class="form-control">
+                                                       <div class="form-group">
+                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:select  path="country" class="form-control" items="${listCountries}" itemLabel="titleCountry">
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                                									<c:forEach items="${listCountries}" var="country">
+                                									<%-- <c:forEach items="" var="country">
                                 										<form:option path="country" value="${country.titleCountry}"></form:option>
-                                									</c:forEach>							 
+                                									</c:forEach> --%>							 
                            										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="area" class="control-label col-md-3 col-sm-3">Area</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:select path="area" class="form-control" name="" id="">
-                                									<%-- <form:option value="undefined" disabled selected>Select area</form:option> --%>
-                               										<c:forEach items="${listAreas}" var="a">
-                               											<form:option value="${a.titleArea}"></form:option>
-                               										</c:forEach>
-                            									</form:select>
+                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about brand"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="imageForBrand" class="control-label col-md-3 col-sm-3">Image
+                                                            <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForBrand" multiple="multiple" type="file" class="form-control"></form:input>
+                                                                <input path="imagePath" name="image" type="file" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button type="submit" class="btn btn-success">Add</button>
+                                                                <input type="submit" class="btn btn-success" value="Add">
                                                             </div>
                                                         </div>
+
                                                     </form:form>
                                                 </div>
                                             </div>
@@ -456,10 +435,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <form:label path="imageForModel" class="control-label col-md-3 col-sm-3">Image
+                                                            <form:label path="imagePath" name="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imageForModel" multiple="multiple" type="file" class="form-control"></form:input>
+                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

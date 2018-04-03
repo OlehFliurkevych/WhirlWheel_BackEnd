@@ -1,5 +1,6 @@
 package com.whirl.wheel.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,10 @@ public class NewsEntity extends BaseEntity{
 	
 	private String description;
 	
-	@OneToOne
-	@JoinColumn(name="image_id")
-	private UploadImageEntity imageForNews;
+	@Column(name="image_path")
+	private String imagePath;
+	
+//	@OneToOne
+//	@JoinColumn(name="image_id")
+//	private UploadImageEntity imageForNews;
 }

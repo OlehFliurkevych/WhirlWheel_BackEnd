@@ -23,6 +23,9 @@ public class ModelEntity extends BaseEntity{
 	
 	private String description;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 //	@OneToOne
 //	@JoinColumn(name="image_id")
 //	private UploadImageEntity imageForModel;
