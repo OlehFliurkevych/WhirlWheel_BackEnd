@@ -1,5 +1,6 @@
 package com.whirl.wheel.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,11 +23,11 @@ public class ModelEntity extends BaseEntity{
 	
 	private String description;
 	
-	@OneToOne
-	@JoinColumn(name="image_id")
-	private UploadImageEntity imageForModel;
+//	@OneToOne
+//	@JoinColumn(name="image_id")
+//	private UploadImageEntity imageForModel;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="brand_id")
 	private BrandEntity brand;
 	

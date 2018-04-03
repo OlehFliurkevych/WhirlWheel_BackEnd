@@ -130,24 +130,33 @@
                 </div> 
             </div>
         </div>
-        <div id="news">
-            <div class="container-fluid">
-                <div class="row newsRow">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <p>Headlings</p>
-                        <img src="${pageContext.request.contextPath}/resources/img/1.jpg" alt="" class="img-responsive"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        <p><a href="">More</a></p>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <p>Headlings</p>
-                        <img src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="" class="img-responsive"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        <p><a href="">More</a></p>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <p>Headlings</p>
-                        <img src="${pageContext.request.contextPath}/resources/img/3.jpg" alt="" class="img-responsive"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        <p><a href="">More</a></p>
-                    </div>
+        <div class="newsRow row">
+                <div class="col-sm-6 col-md-4 news">
+                    <a style="color:#2d2d2d;" href="#">
+                        <div class="feature-box">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
+                            <h4>Great Support</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 news">
+                    <a style="color:#2d2d2d;" href="#">
+                        <div class="feature-box">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
+                            <h4>Great Support</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-6 col-md-4 news">
+                    <a style="color:#2d2d2d;" href="#">
+                        <div class="feature-box">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
+                            <h4>Great Support</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>

@@ -21,5 +21,5 @@ public class ConcernRequest {
 	private String title;
 	private CountryEntity country;
 	private String description;
-	private String imagePath;
+	private ImageRequest image;
 }

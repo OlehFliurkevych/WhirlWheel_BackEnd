@@ -17,7 +17,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>
@@ -26,7 +26,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>
@@ -36,7 +36,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>
@@ -47,7 +47,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>
@@ -56,7 +56,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>
@@ -66,7 +66,7 @@
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="img/2.jpg" alt="">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
                             <h4>Great Support</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
                         </div>

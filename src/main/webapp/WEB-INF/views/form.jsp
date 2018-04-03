@@ -2,10 +2,9 @@
 	<h1>Spring Boot file upload example</h1>
             <form:form method="POST" 
             action="/admin/upload" 
-            enctype="multipart/form-data"
-            modelAttribute="imageModel">
-                <form:input type="file" path="fileData"  name="fileData"></form:input><br/><br/>
-                <form:button type="submit" value="Submit">Add</form:button>
+            enctype="multipart/form-data">
+                <input type="file" path="image"  name="image"></input><br/><br/>
+                <input type="submit" value="Submit"/>
                 
             </form:form>
            <%--  <div th:if="${message}">

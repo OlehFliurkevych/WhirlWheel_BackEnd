@@ -13,5 +13,6 @@ import lombok.Setter;
 @Getter @Setter
 public class ImageRequest {
 
+	private int id;
 	private MultipartFile image;
 }

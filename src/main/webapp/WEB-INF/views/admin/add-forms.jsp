@@ -1,5 +1,7 @@
 <%@ include file="/WEB-INF/taglib.jsp" %>
 
+<a href="${rootUrl}/concern/form">Form for concern</a>
+
 <div class="container-fluid">
             <div data-spy="scroll" style="position: relative;" data-target="#MyScrollspy" data-offset="20" class="container-fluid">
                 <div class="row">
@@ -10,19 +12,10 @@
                             </h5>
                             <ul  class="nav nav-pills nav-stacked">
                                 <li class="active"><a href="#panelHome">Home <i class="glyphicons glyphicons-delete"></i></a></li>
-                                <li><a href="#panelView"><i class="fas fa-list-alt"></i> View  </a></li>
-                                <li><a href="#panelAdd"><i class="fas fa-plus-square"></i> Add     </a></li>
-                                <li><a href="#panelDelete"><i class="fa fa-minus-square"></i> Delete     </a></li>
+                                <li><a href="#panelView"><i class="fas fa-list-alt"></i> View</a></li>
+                                <li><a href="#panelAdd"><i class="fas fa-plus-square"></i> Add</a></li>
+                                <li><a href="#panelDelete"><i class="fa fa-minus-square"></i> Delete</a></li>
                             </ul>
-                            <!--
-                        <h5><i class="glyphicon glyphicon-user"></i>
-                            <small><b>USERS</b></small>
-                        </h5>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">List</a></li>
-                            <li><a href="#">Manage</a></li>
-                        </ul>
--->
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9">
@@ -50,34 +43,22 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Headlind</th>
+                                                                <th>Headline</th>
                                                                 <th>Description</th>
                                                                 <th>Link</th>
                                                                 <th>Id Image</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <c:forEach items="${listNews}" var="n">
                                                             <tr>
-                                                                <th>1</th>
-                                                                <th>Some head</th>
-                                                                <th>Some description</th>
-                                                                <th>Link</th>
-                                                                <th>Id Image</th>
+                                                                <th>${n.id}</th>
+                                                                <th>${n.headline}</th>
+                                                                <th>${n.description}</th>
+                                                                <th>${n.link}</th>
+                                                                <th>${n.imagePath}</th>
                                                             </tr>
-                                                            <tr>
-                                                                <th>2</th>
-                                                                <th>Some head2</th>
-                                                                <th>Some description2</th>
-                                                                <th>Link2</th>
-                                                                <th>Id Image2</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>3</th>
-                                                                <th>Some head3</th>
-                                                                <th>Some description3</th>
-                                                                <th>Link3</th>
-                                                                <th>Id Image3</th>
-                                                            </tr>
+                                                         </c:forEach>   
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -102,27 +83,15 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <c:forEach items="${listConcerns}" var="c">
                                                             <tr>
-                                                                <th>Id 1</th>
-                                                                <th>Title1</th>
-                                                                <th>Country1</th>
-                                                                <th>Description1</th>
-                                                                <th>Path to image1</th>
+                                                                <th>${c.id}</th>
+                                                                <th>${c.titleConcern}</th>
+                                                                <th>${c.country.getTitleCountry}</th>
+                                                                <th>${c.description}</th>
+                                                                <th>${c.imagePath}</th>
                                                             </tr>
-                                                            <tr>
-                                                                <th>Id3</th>
-                                                                <th>Title3</th>
-                                                                <th>Country3</th>
-                                                                <th>Descriptio3</th>
-                                                                <th>Path to imag3</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Id4</th>
-                                                                <th>Title4</th>
-                                                                <th>Country4</th>
-                                                                <th>Description4</th>
-                                                                <th>Path to image4</th>
-                                                            </tr>
+                                                          </c:forEach>  
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -135,7 +104,34 @@
                                                 </h4>
                                             </div>
                                             <div id="tableBrands" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Concern</th>
+                                                                <th>Country</th>
+                                                                <th>Area</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listBrands}" var="b">
+                                                            <tr>
+                                                                <th>${b.id}</th>
+                                                                <th>${b.titleBrand}</th>
+                                                                <th>${b.concern.getTitleConcern}</th>
+                                                                <th>${b.country.getTitleCountry}</th>
+                                                                <th>${b.area.getTitleArea}</th>
+                                                                <th>${b.description}</th>
+                                                                <th>${b.imagePath}</th>
+                                                            </tr>
+                                                          </c:forEach>  
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -145,7 +141,30 @@
                                                 </h4>
                                             </div>
                                             <div id="tableModels" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Brand</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listModels}" var="m">
+                                                            <tr>
+                                                                <th>${m.id}</th>
+                                                                <th>${m.titleModel}</th>
+                                                                <th>${m.brand.getTitleBrand}</th>
+                                                                <th>${m.description}</th>
+                                                                <th>${m.imagePath}</th>
+                                                            </tr>
+                                                          </c:forEach>  
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -155,7 +174,24 @@
                                                 </h4>
                                             </div>
                                             <div id="tableAreas" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listAreas}" var="a">
+                                                            <tr>
+                                                                <th>${a.id}</th>
+                                                                <th>${a.titleArea}</th>
+                                                            </tr>
+                                                         </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -165,7 +201,24 @@
                                                 </h4>
                                             </div>
                                             <div id="tableCountries" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listCountries}" var="c">
+                                                            <tr>
+                                                                <th>${c.id}</th>
+                                                                <th>${c.titleCountry}</th>
+                                                            </tr>
+                                                         </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +254,7 @@
                                                     		class="form-horizontal"
                                                     		method="POST"
                                                     		enctype="multipart/form-data"
-                                                    		modelAttribute="newsModel">
+                                                    		 modelAttribute="newsModel">
                                                         <div class="form-group">
                                                             <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -259,11 +312,11 @@
                                                         <div class="form-group">
                                                             <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select   path="country" class="form-control">
+                                                                <form:select  path="country" class="form-control" items="${listCountries}" itemLabel="titleCountry">
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                                									<c:forEach items="${listCountries}" var="country">
+                                									<%-- <c:forEach items="" var="country">
                                 										<form:option path="country" value="${country.titleCountry}"></form:option>
-                                									</c:forEach>							 
+                                									</c:forEach>	 --%>						 
                            										 </form:select>
                                                             </div>
                                                         </div>
@@ -277,12 +330,12 @@
                                                             <form:label path="image" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="image" name="image" multiple="multiple" type="file" class="form-control"></form:input>
+                                                                <input name="image" type="file" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button type="submit" class="btn btn-success">Add</button>
+                                                                <input type="submit" class="btn btn-success" value="Add">
                                                             </div>
                                                         </div>
 

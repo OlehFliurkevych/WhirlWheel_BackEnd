@@ -17,7 +17,7 @@ h3{
 /*    border-top: 14px solid #2e2e2d ; */
 /*    background: linear-gradient(to bottom, rgba(46, 46, 45,1),rgba(46, 46, 45,0));*/
     
-    background-color: #4d4d4d;   
+        
     font-size: 16px;
     
 }
@@ -26,7 +26,6 @@ body{
     font-family: "GilroyLight";
     font-size: 16px;
 }
-
 
 
 a:hover,a:focus{
@@ -156,12 +155,16 @@ a:hover,a:focus{
 }
 
 
-#news{
+.newsRow{
+    margin-top: 40px;
+/*
     font-family: "GilroyLight";
-    background-image: url(../img/audi.png);
+      background-image: url(../img/audi.png);
     min-height: 600px;
     width: 100%;
     text-align: center;
+*/
+/*
     background-attachment: relative;
     background-position: center center;
     background-size:100%;
@@ -170,10 +173,12 @@ a:hover,a:focus{
     
     -webkit-background-size:cover;
     -o-background-size:cover;
+*/
 }
 
 
 
+/*
 #news .container-fluid .newsRow{
     display: flex;
     flex-direction: row;
@@ -200,6 +205,11 @@ a:hover,a:focus{
     color: #f74d12;
 }
 
+.newsRow .row{
+    padding-bottom: 20px;
+}
+*/
+
 #concerns .emblem img{
     width: 100%;
 }
@@ -224,16 +234,19 @@ footer{
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 .bg-lightgray
 {
+/*    height: 100px;    */
     font-size: 15px;
     font-family: "GilroyLight";
     color: white;
-    background-color: #2d2d2d;
+    background-image: url(../img/footer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+/*    background-attachment: relative;*/
+/*    background-position: center center;*/
+/*    background-size: 100%;*/
+/*    background-color: #2d2d2d;*/
 }
 
-/*Style for admin page*/
-
-
-/*Panel tabs*/
 #adminForm{
     padding-bottom: 10px;
     padding-top: 20px;
@@ -244,6 +257,7 @@ footer{
     box-shadow: 1px 1px 1px 1px #2d2d2d;
 }
 
+/*Panel tabs*/
 .panel-tabs {
     position: relative;
     bottom: 30px;
@@ -283,7 +297,110 @@ footer{
     border-bottom-color: transparent;
 }
 
+ .image-aboutus-banner {
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(${pageContext.request.contextPath}/resources/img/banner3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    padding-top: 110px;
+    padding-bottom:110px;
+ }
+ 
+ 
+.lg-text {
+    font-size:52px;
+    font-weight: 600;
+    text-transform: none;
+    color:#fff;
+}
+.image-aboutus-para {
+    color:#fff;
+}
+
+.paddingTB60 {
+    padding-top:60px;
+    padding-bottom:60px;
+}
+
+.site-heading h3{
+    font-size : 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.team-content {
+    padding: 0px 15px 15px 15px;
+}
+.border-team {
+    border-bottom:1px solid #e2e2e2;
+    margin-bottom:10px;
+}
+.team-img img{
+    
+}
+.team-img:hover {
+    background:#f5f5f5;
+    
+}
+
+.social-icons{
+    
+    margin: 0;
+    padding: 0;
+    font-size : 10px;
+}
+.social {
+    margin:7px 7px 7px 0px;
+    color:#232323;
+}
 
 
+#social-fb:hover {
+     color: #3B5998;
+     transition:all .25s;
+ }
+ #social-in:hover {
+     color: #006080;
+     transition:all .25s;
+ }
+ #social-gp:hover {
+     color: #d34836;
+     transition:all .25s;
+ }
+ #social-em:hover {
+     color: #f39c12;
+     transition:all .25s;
+ }
 
+ .cta-padding35 {
+    padding: 35px 0 35px;
+    background-color: #f74d12;
+    color:#fff;
+}
 
+.icon {
+    color : #fff;
+    padding:15px;
+    background:#323232 ;
+    font-size:50px;
+    border-radius:90px;
+    border:10px solid #323232 ;
+    
+}
+.feature-box {
+    text-align: center;
+    padding: 20px;
+    transition: .5s;
+    margin-bottom: 30px;
+    border: 1px solid #e8e8e8;
+}
+.feature-box:hover {
+   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.feature-box h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 25px 0 15px;
+}

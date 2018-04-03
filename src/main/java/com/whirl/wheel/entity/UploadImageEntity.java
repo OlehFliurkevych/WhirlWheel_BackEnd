@@ -20,15 +20,15 @@ public class UploadImageEntity extends BaseEntity{
 	@Column(name="file_data", length=1000000)
 	private byte[] fileData;
 	
-	@OneToOne(mappedBy="imageForConcern")
-	private ConcernEntity concern;
-	
-	@OneToOne(mappedBy="imageForBrand")
-	private BrandEntity brand;
-	
-	@OneToOne(mappedBy="imageForModel")
-	private ModelEntity model;
-	
-	@OneToOne(mappedBy="imageForNews")
-	private NewsEntity news;
+//	@OneToOne(mappedBy="imageForConcern")
+//	private ConcernEntity concern;
+//	
+//	@OneToOne(mappedBy="imageForBrand")
+//	private BrandEntity brand;
+//	
+//	@OneToOne(mappedBy="imageForModel")
+//	private ModelEntity model;
+//	
+//	@OneToOne(mappedBy="imageForNews")
+//	private NewsEntity news;
 }

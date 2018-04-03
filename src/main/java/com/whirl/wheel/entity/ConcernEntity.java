@@ -3,9 +3,9 @@ package com.whirl.wheel.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +25,7 @@ public class ConcernEntity extends BaseEntity{
 	
 	private String description;
 	
-//	@OneToOne
+//	@OneToOne(cascade = {CascadeType.ALL})
 //	@JoinColumn(name="image_id")
 //	private UploadImageEntity imageForConcern;
 	
@@ -36,7 +36,7 @@ public class ConcernEntity extends BaseEntity{
 //	@JoinColumn(name="image_for_concern_id")
 //	private UploadImageForConcern imageForConcern;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="country_id")
 	private CountryEntity country;
 	

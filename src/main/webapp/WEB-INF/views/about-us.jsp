@@ -40,7 +40,7 @@
 
             <div class="col-md-4 col-md-offset-2 team-box">
                 <div class="team-img thumbnail">
-                    <img src="img/oleh_fliurkevych.jpg">
+                    <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/oleh_fliurkevych.jpg">
                     <div class="team-content">
                         <h3>Oleh Fliurkevych</h3>
                         <div class="border-team"></div>
@@ -49,14 +49,13 @@
                             <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
                             <a href="https://twitter.com/"><i id="social-in" class="fa fa-linkedin-square fa-3x social"></i></a>
                             <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
-                            
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 team-box">
                 <div class="team-img thumbnail">
-                    <img src="img/oleh_fliurkevych.jpg">
+                    <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/oleh_fliurkevych.jpg">
                     <div class="team-content">
                         <h3>Rinat Botchenko</h3>
                         <div class="border-team"></div>
