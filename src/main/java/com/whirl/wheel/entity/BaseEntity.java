@@ -9,9 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @MappedSuperclass
-@Data
+@NoArgsConstructor
+@Setter
+@Getter
 public class BaseEntity {
 
 	@Id

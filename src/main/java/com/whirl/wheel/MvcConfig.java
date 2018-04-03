@@ -14,6 +14,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.whirl.wheel.formatter.ConcernFormatter;
+import com.whirl.wheel.formatter.CountryFormatter;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan
@@ -45,13 +48,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 	    };
 	}
 
-//	@Override
-//	public void addFormatters(FormatterRegistry registry) {
-//		registry.addFormatter(new ConcernFormatter());
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addFormatter(new ConcernFormatter());
+		registry.addFormatter(new CountryFormatter());
 //		registry.addFormatter(new BrandFormatter());
 //		registry.addFormatter(new ModelFormatter());
 //		registry.addFormatter(new AreaFormatter());
-//	}
+	}
 	
 	
 	

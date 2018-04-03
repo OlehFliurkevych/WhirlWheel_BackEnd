@@ -17,8 +17,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@NoArgsConstructor
+@Setter @Getter
 @Entity
 @Table(name="brand",indexes=@Index(columnList="title_brand"))
 public class BrandEntity extends BaseEntity {

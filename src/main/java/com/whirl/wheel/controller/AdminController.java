@@ -117,8 +117,14 @@ public class AdminController {
 //		System.out.println("3");
 //		return "redirect:/admin/upload";
 //	}
+	@GetMapping("/upload")
+	public String showForm(Model model) {
+		model.addAttribute("concernModel",new ConcernEntity());
+		model.addAttribute("listCountries",countryService.findAllCountries());
+		return "form";
+	}
 
-	@PostMapping("/saveConcern")
+	@PostMapping("/save")
 	public String saveConcern(@ModelAttribute("concernModel")ConcernEntity concern,
 			@RequestParam("image")MultipartFile image) {
 		System.out.println("went to method");

@@ -298,7 +298,8 @@ footer{
 }
 
  .image-aboutus-banner {
-    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(${pageContext.request.contextPath}/resources/img/banner3.jpg);
+    /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)); */
+    background-image: url(../img/banner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

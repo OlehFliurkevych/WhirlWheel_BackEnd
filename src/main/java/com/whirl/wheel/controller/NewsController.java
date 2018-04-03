@@ -7,6 +7,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,6 +49,7 @@ public class NewsController {
 		return "news/add-news";
 	}
 	
+	@PostMapping("/save")
 	public String saveNews(
 			@ModelAttribute("newsModel")NewsEntity news,
 			@RequestParam("image")MultipartFile image) {

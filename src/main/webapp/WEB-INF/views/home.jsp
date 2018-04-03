@@ -6,26 +6,35 @@
                         <p>Choose <br> your <span id="wheel">wheel!</span></p>
                     </div>
                     <div id="form" class="col-lg-4 col-md-4 col-sm-4">
-                        <form action="" class="form-horizontal">
+                        <form:form action="" class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <select class="selectConcern form-control input-sm" name="" id="selconcern">
-                              			<option value="">Concern</option>
-                           </select>
+                                    <form:select class="selectConcern form-control input-sm" name="" id="selconcern">
+                                    <option disable value="">Select concern</option>
+                              			<c:forEach items="${listConcerns}" var="c">
+                              				<option item="${c.titleConcern}"></option>
+                              			</c:forEach>
+                           </form:select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <select class="selectBrand form-control input-sm" name="" id="selbrand">
-                               			<option value="">Brand</option>
-                           </select>
+                           <form:select class="selectBrand form-control input-sm" name="" id="selbrand">
+                               				<option disable value="">Select brand</option>
+                               			<c:forEach items="${listBrands}" var="b">
+                               				<option item="${b.titleBrand}"></option>
+                               			</c:forEach>
+                           </form:select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <select name="" class="selectModel form-control input-sm" id="">
-                               <option value="">Model</option>
-                           </select>
+                                    <form:select\ class="selectModel form-control input-sm" id="selmodel">
+                               				<option disable value="">Select model</option>
+                               				<c:forEach items="${listModels}" var="m">
+                               					<option item="${m.titleModel}"></option>
+                               				</c:forEach>
+                           </form:select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -33,7 +42,7 @@
                                     <button type="submit" class="btn btn-default btn-sm">Search</button>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
             </div>

@@ -14,15 +14,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+
 @Entity
 @Table(name="concern",indexes=@Index(columnList="title_concern"))
+@NoArgsConstructor
+@Getter @Setter
 public class ConcernEntity extends BaseEntity{
 
 	@Column(name="title_concern")
 	private String titleConcern;
 	
+	@Column(columnDefinition="text")
 	private String description;
 	
 //	@OneToOne(cascade = {CascadeType.ALL})
@@ -36,7 +42,7 @@ public class ConcernEntity extends BaseEntity{
 //	@JoinColumn(name="image_for_concern_id")
 //	private UploadImageForConcern imageForConcern;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="country_id")
 	private CountryEntity country;
 	

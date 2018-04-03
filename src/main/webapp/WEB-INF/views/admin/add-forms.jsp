@@ -87,7 +87,7 @@
                                                             <tr>
                                                                 <th>${c.id}</th>
                                                                 <th>${c.titleConcern}</th>
-                                                                <th>${c.country.getTitleCountry}</th>
+                                                                <th>${c.country.titleCountry}</th>
                                                                 <th>${c.description}</th>
                                                                 <th>${c.imagePath}</th>
                                                             </tr>
@@ -122,8 +122,8 @@
                                                             <tr>
                                                                 <th>${b.id}</th>
                                                                 <th>${b.titleBrand}</th>
-                                                                <th>${b.concern.getTitleConcern}</th>
-                                                                <th>${b.country.getTitleCountry}</th>
+                                                                <th>${b.concern.titleConcern}</th>
+                                                                <th>${b.country.titleCountry}</th>
                                                                 <th>${b.area.getTitleArea}</th>
                                                                 <th>${b.description}</th>
                                                                 <th>${b.imagePath}</th>
@@ -157,7 +157,7 @@
                                                             <tr>
                                                                 <th>${m.id}</th>
                                                                 <th>${m.titleModel}</th>
-                                                                <th>${m.brand.getTitleBrand}</th>
+                                                                <th>${m.brand.titleBrand}</th>
                                                                 <th>${m.description}</th>
                                                                 <th>${m.imagePath}</th>
                                                             </tr>
@@ -245,267 +245,49 @@
                                     <div class="tab-pane active" id="newsPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add news</h3>
+                                               <a href="${rootUrl}/news/form"> <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add news</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootURL}/admin/saveNews" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		enctype="multipart/form-data"
-                                                    		 modelAttribute="newsModel">
-                                                        <div class="form-group">
-                                                            <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="link" class="control-label col-md-3 col-sm-3">Link</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="imagePath" class="control-label col-md-3 col-sm-3">Image</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button ttpe="submit" class="btn btn-success">Add</button>
-                                                            </div> 
-                                                        </div>
-
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="concernPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add concern</h3>
+                                                <a href="${rootUrl}/concern/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add concern</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootUrl}/admin/saveConcern" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		enctype="multipart/form-data"
-                                                    		modelAttribute="concernModel">
-                                                        <div class="form-group">
-                                                            <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select  path="country" class="form-control" items="${listCountries}" itemLabel="titleCountry">
-                                									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                                									<%-- <c:forEach items="" var="country">
-                                										<form:option path="country" value="${country.titleCountry}"></form:option>
-                                									</c:forEach>	 --%>						 
-                           										 </form:select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
-                                                        </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <input type="submit" class="btn btn-success" value="Add">
-                                                            </div>
-                                                        </div>
-
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="brandPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add brand</h3>
+                                                <a href="${rootUrl}/brand/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add brand</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${pageContext.request.contextPath}/concern/save" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		enctype="multipart/form-data"
-                                                    		modelAttribute="concernModel">
-                                                        <div class="form-group">
-                                                            <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
-                                                            </div>
-                                                        </div>
-                                                       <div class="form-group">
-                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select  path="country" class="form-control" items="${listCountries}" itemLabel="titleCountry">
-                                									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                                									<%-- <c:forEach items="" var="country">
-                                										<form:option path="country" value="${country.titleCountry}"></form:option>
-                                									</c:forEach> --%>							 
-                           										 </form:select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
-                                                        </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <input type="submit" class="btn btn-success" value="Add">
-                                                            </div>
-                                                        </div>
-
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="modelPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add model</h3>
+                                                <a href="${rootUrl}/model/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add model</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootURL}/admin/saveModel" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		enctype="multipart/form-data"
-                                                    		modelAttribute="modelModel">
-                                                        <div class="form-group">
-                                                            <form:label path="titleModel" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:input path="titleModel" type="text" class="form-control" placeholder="Enter model title"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="brand" class="control-label col-md-3 col-sm-3">Brand</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:select path="brand" class="form-control" name="" id="">
-                                									<%-- <form:option value="undefined"  disabled selected>Select brand</form:option> --%>
-                                									<c:forEach items="${listBrands}" var="b">
-                                										<form:option path="brand" value="${b.titleBrand}"></form:option>
-                                									</c:forEach>
-                            									</form:select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" cols="30" rows="10" placeholder="Enter description about model"></form:textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <form:label path="imagePath" name="image" class="control-label col-md-3 col-sm-3">Image
-                                                        </form:label>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="imagePath" name="image" type="file" class="form-control"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button type="submit" class="btn btn-success">Add</button>
-                                                            </div>
-                                                        </div>
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="countryPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add country</h3>
+                                                <a href="${rootUrl}/country/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add country</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootURL}/admin/saveCountry" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		modelAttribute="countryModel">
-                                                        <div class="form-group">
-                                                            <form:label path="titleCountry" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:input class="form-control" placeholder="Enter country title" path="titleCountry"></form:input>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button type="submit"  class="btn btn-success">Add</button>
-                                                            </div>
-                                                        </div>
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="areaPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add area</h3>
+                                                <a href="${rootUrl}/area/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add area</h3></a>
                                             </div>
-                                            <div class="row">
-
-                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-                                                    <form:form action="${rootURL}/admin/saveArea" 
-                                                    		class="form-horizontal"
-                                                    		method="POST"
-                                                    		modelAttribute="areaModel">
-                                                        <div class="form-group">
-                                                            <form:label path="titleArea" class="control-label col-md-3 col-sm-3">Title </form:label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <form:input type="text" class="form-control" placeholder="Enter area title" path="titleArea"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
-                                                                <button type="submit" class="btn btn-success">Add</button>
-                                                            </div>
-                                                        </div>
-                                                    </form:form>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

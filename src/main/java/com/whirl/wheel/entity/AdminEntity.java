@@ -8,8 +8,12 @@ import javax.persistence.Table;
 import com.whirl.wheel.enumeration.RoleEnum;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@NoArgsConstructor
+@Setter @Getter
 @Table(name="admin",indexes=@Index(columnList="admin_name"))
 @Entity
 public class AdminEntity extends BaseEntity{

@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +17,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.whirl.wheel.CloudinaryConfig;
+import com.whirl.wheel.editor.AreaEditor;
+import com.whirl.wheel.editor.BrandEditor;
+import com.whirl.wheel.editor.ConcernEditor;
+import com.whirl.wheel.editor.CountryEditor;
+import com.whirl.wheel.editor.ModelEditor;
+import com.whirl.wheel.editor.NewsEditor;
+import com.whirl.wheel.entity.AreaEntity;
+import com.whirl.wheel.entity.BrandEntity;
+import com.whirl.wheel.entity.ConcernEntity;
+import com.whirl.wheel.entity.CountryEntity;
+import com.whirl.wheel.entity.ModelEntity;
+import com.whirl.wheel.entity.NewsEntity;
+import com.whirl.wheel.service.AreaService;
+import com.whirl.wheel.service.BrandService;
+import com.whirl.wheel.service.ConcernService;
+import com.whirl.wheel.service.CountryService;
+import com.whirl.wheel.service.ModelService;
+import com.whirl.wheel.service.NewsService;
 
 @Controller
 public class BaseController {
@@ -44,9 +64,40 @@ public class BaseController {
 //	        return "redirect:/upload";
 //	    }
 
+	private ConcernService concernService;
+	private CountryService countryService;
+	private BrandService brandService;
+	private ModelService modelService;
+	private AreaService areaService;
+	private NewsService newsService;
+	
+	@Autowired
+	public BaseController(ConcernService concernService, CountryService countryService, BrandService brandService,
+			ModelService modelService, AreaService areaService, NewsService newsService) {
+		this.concernService = concernService;
+		this.countryService = countryService;
+		this.brandService = brandService;
+		this.modelService = modelService;
+		this.areaService = areaService;
+		this.newsService = newsService;
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(ConcernEntity.class, new ConcernEditor(concernService));
+		binder.registerCustomEditor(BrandEntity.class, new BrandEditor(brandService));
+		binder.registerCustomEditor(ModelEntity.class, new ModelEditor(modelService));
+		binder.registerCustomEditor(CountryEntity.class, new CountryEditor(countryService));
+		binder.registerCustomEditor(AreaEntity.class, new AreaEditor(areaService));
+		binder.registerCustomEditor(NewsEntity.class, new NewsEditor(newsService));
+	}
+
 	@GetMapping({"/","/home"})
 	public String showHomePage(Model model) {
 		model.addAttribute("title","Home");
+		model.addAttribute("listConcerns",concernService.findAllConcerns());
+		model.addAttribute("listBrands",brandService.findAllBrands());
+		model.addAttribute("listModels",modelService.findAllModels());
 		return "home";
 	}
 	

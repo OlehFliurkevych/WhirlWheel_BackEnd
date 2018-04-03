@@ -14,8 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@NoArgsConstructor
+@Setter @Getter
 @Entity
 @Table(name="area",indexes=@Index(columnList="title_area"))
 public class AreaEntity extends BaseEntity{

@@ -1,9 +1,8 @@
-										<%@ include file="/WEB-INF/taglib.jsp" %>
-<div class="container-fluid">
+<%@ include file="/WEB-INF/taglib.jsp" %>
+<!-- <div class="container-fluid">
             <div data-spy="scroll" style="position: relative;" data-target="#MyScrollspy" data-offset="20" class="container-fluid">
                 <div class="row">
                     <div id="myScrollspy" class="col-lg-3 col-md-3 col-sm-3">
-                        <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
                         <div style="position: relative;" id="sidebar" class="well sidebar-nav">
                             <h5><i class="glyphicon glyphicon-home"></i> <i class="glyphicons glyphicons-delete"></i> MANAGEMENT
                             </h5>
@@ -18,7 +17,7 @@
                     <div class="col-lg-9 col-md-9 col-sm-9">
                         <div id="panelHome" class="panel panel-primary">
                             <div class="panel-heading">Home</div>
-                            <div class="panel-body">										
+                            <div class="panel-body"> -->										
 										<form:form action="${pageContext.request.contextPath}/concern/save" 
                                                     		class="form-horizontal"
                                                     		method="POST"
@@ -33,11 +32,8 @@
                                                        <div class="form-group">
                                                             <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select  path="country" class="form-control" items="${listCountries}" itemLabel="titleCountry">
+                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control">
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
-                                									<%-- <c:forEach items="" var="country">
-                                										<form:option path="country" value="${country.titleCountry}"></form:option>
-                                									</c:forEach> --%>							 
                            										 </form:select>
                                                             </div>
                                                         </div>
@@ -51,7 +47,7 @@
                                                             <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control">
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -61,9 +57,9 @@
                                                         </div>
 
                                                     </form:form>
+<!--                                                  </div>
                                                  </div>
                                                  </div>
                                                  </div>
                                                  </div>
-                                                 </div>
-                                                 </div>
+                                                 </div> -->
