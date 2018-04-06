@@ -3,27 +3,21 @@ package com.whirl.wheel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.whirl.wheel.editor.AreaEditor;
 import com.whirl.wheel.editor.BrandEditor;
-import com.whirl.wheel.editor.ConcernEditor;
-import com.whirl.wheel.editor.CountryEditor;
 import com.whirl.wheel.editor.ModelEditor;
-import com.whirl.wheel.editor.NewsEditor;
-import com.whirl.wheel.entity.AreaEntity;
 import com.whirl.wheel.entity.BrandEntity;
-import com.whirl.wheel.entity.ConcernEntity;
-import com.whirl.wheel.entity.CountryEntity;
 import com.whirl.wheel.entity.ModelEntity;
-import com.whirl.wheel.entity.NewsEntity;
 import com.whirl.wheel.service.BrandService;
 import com.whirl.wheel.service.ModelService;
 
@@ -46,27 +40,43 @@ public class ModelController {
 		binder.registerCustomEditor(ModelEntity.class, new ModelEditor(modelService));
 	}
 	
-	@GetMapping("/form")
+/*	@GetMapping("/form")
 	public String showForm(Model model) {
 		model.addAttribute("modelModel",new ModelEntity());
 		model.addAttribute("listBrands",brandService.findAllBrands());
 		return "model/add-model";
-	}
+	}*/
 	
 	
 
 	@PostMapping("/save")
 	public String saveModel(
-			@ModelAttribute("modelModel")ModelEntity model,
-			@RequestParam("image")MultipartFile image) {
+			Model model,
+			@ModelAttribute("modelModel")ModelEntity modelEntity,
+			@RequestParam("image")MultipartFile image,
+			BindingResult result) {
+		if(result.hasErrors()) {
+//			model.addAttribute("messageForAdd","You don't add model");
+			return "admin/add-forms";
+		}
 		if(image!=null&&image.getSize()>0) {
 			System.out.println("went to method");
-			modelService.saveModel(model);
+			modelService.saveModel(modelEntity);
 			System.out.println("save concern");
-			modelService.uploadImage(image, model.getId());
+			modelService.uploadImage(image, modelEntity.getId());
 			System.out.println("upload image!END!");
-			return "redirect:/model/form";
+//			model.addAttribute("messageForAdd","You successfully add model"+modelEntity.getTitleModel());
+			return "redirect:/admin/profile";
+			
 		}
-		return "model/add-model";
+//		model.addAttribute("messageForAdd","You don't add model");
+		return "admin/add-forms";
+	}
+	
+	@GetMapping("/{m.id}/delete")
+	public String deleteModel(
+			@PathVariable("m.id")int modelId) {
+		modelService.deleteModelById(modelId);
+		return "redirect:/admin/profile";
 	}
 }

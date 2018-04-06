@@ -12,6 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.Getter;
@@ -24,6 +28,9 @@ import lombok.Setter;
 @Table(name="area",indexes=@Index(columnList="title_area"))
 public class AreaEntity extends BaseEntity{
 	
+	@NotEmpty
+	@Size(min=3,message="Title area must be longer then 3 symbols")
+	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_area")
 	private String titleArea;
 	

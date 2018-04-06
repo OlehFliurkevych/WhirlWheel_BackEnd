@@ -115,6 +115,7 @@ public class BaseController {
 	
 	@GetMapping("/news")
 	public String showNews(Model model) {
+		model.addAttribute("listConcern",concernService.findAllConcerns());
 		model.addAttribute("title","News");
 		return "news";
 	}

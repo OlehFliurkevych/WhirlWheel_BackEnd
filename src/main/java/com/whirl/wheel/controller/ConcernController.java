@@ -12,6 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,13 +85,13 @@ public class ConcernController {
 	
 	
 
-	@GetMapping("/form")
-	public String formConcern(Model model) {
-		model.addAttribute("concernModel",new ConcernEntity());
+//	@GetMapping("/form")
+//	public String formConcern(Model model) {
+//		model.addAttribute("concernModel",new ConcernEntity());
 //		model.addAttribute("concernModelRequest",new ConcernRequest());
-		model.addAttribute("listCountries",countryService.findAllCountries());
-		return "concern/add-concern";
-	}
+//		model.addAttribute("listCountries",countryService.findAllCountries());
+//		return "concern/add-concern";
+//	}
 	
 	
 //	@PostMapping("/save")
@@ -108,12 +109,20 @@ public class ConcernController {
 		
 	@PostMapping("/save")
 	public String saveConcernToDB(@ModelAttribute("concernModel")ConcernEntity concern,
-			@RequestParam("image")MultipartFile image) {
-		System.out.println("went to method");
-		concernService.saveConcern(concern);
-		System.out.println("save concern");
-		concernService.uploadImage(image, concern.getId());
-		System.out.println("upload image!END!");
-		return "redirect:/concern/form";
+			@RequestParam("image")MultipartFile image,
+			BindingResult result) {
+			System.out.println("went to method");
+			concernService.saveConcern(concern);
+			System.out.println("save concern");
+			concernService.uploadImage(image, concern.getId());
+			System.out.println("upload image!END!");
+			return "redirect:/admin/profile";
+	}
+	
+	@GetMapping("/{c.id}/delete")
+	public String deleteConcern(
+			@PathVariable("c.id")int concenId) {
+		concernService.deleteConcernById(concenId);
+		return "redirect:/admin/profile";
 	}
 }

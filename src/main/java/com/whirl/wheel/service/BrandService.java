@@ -20,4 +20,6 @@ public interface BrandService {
 	List<BrandEntity> findBrandsByConcern(int id);
 	
 	void uploadImage(MultipartFile file,int brandId);
+	
+	void deleteBrandById(int id);
 }

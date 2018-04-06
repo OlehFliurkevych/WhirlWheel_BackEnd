@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/taglib.jsp" %>
 <div class="container-fluid">
             <div class="row">
                 <div class="image-aboutus-banner" style="margin-top:0px;margin-bottom: 10px;">
@@ -14,16 +15,18 @@
         </div>
         <div class="container">
             <div class="newsRow row">
-                <div class="col-sm-6 col-md-4 news">
+            <c:forEach items="${listConcern}" var="n">
+                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
-                            <img class="img-responsive" src="http://res.cloudinary.com/whirl-wheel/image/upload/v1522774256/concern/2/gm_group.jpg" alt="">
-                            <h4>Great Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
+                            <img class="img-responsive" src="${n.imagePath}" alt="">
+                            <h4>${n.titleConcern}</h4>
+                            <p>${n.description}</p>
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-6 col-md-4 news">
+                </c:forEach>
+               <%-- <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">
                         <div class="feature-box">
                             <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
@@ -42,7 +45,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> --%>
             <div class="newsRow row">
                 <div class="col-sm-6 col-md-4 news">
                     <a style="color:#2d2d2d;" href="#">

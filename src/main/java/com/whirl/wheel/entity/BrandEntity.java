@@ -15,6 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.Getter;
@@ -27,11 +32,18 @@ import lombok.Setter;
 @Table(name="brand",indexes=@Index(columnList="title_brand"))
 public class BrandEntity extends BaseEntity {
 
+	@NotEmpty
+	@Size(min=3,message="Title brand must be longer than 3 symbols")
+	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_brand")
 	private String titleBrand;
 	
+	@NotEmpty
+	@Size(min=50,message="Description must be longer than 50 symbols")
+	@Column(columnDefinition="text")
 	private String description;
 	
+	@NotEmpty
 	@Column(name="image_path")
 	private String imagePath;
 	
@@ -39,16 +51,16 @@ public class BrandEntity extends BaseEntity {
 //	@JoinColumn(name="image_id")
 //	private UploadImageEntity imageForBrand;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="country_id")
 	private CountryEntity country;
 
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="concern_id")
 	private ConcernEntity concern;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="area_id")
 	private AreaEntity area;
 	

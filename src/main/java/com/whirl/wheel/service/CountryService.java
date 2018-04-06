@@ -14,4 +14,6 @@ public interface CountryService {
 	
 	CountryEntity findCountryByTitle(String title);
 	
+	void deleteCountryById(int id);
+	
 }

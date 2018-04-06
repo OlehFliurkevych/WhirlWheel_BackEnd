@@ -13,4 +13,6 @@ public interface AreaService {
 	AreaEntity findAreaById(int id);
 	
 	AreaEntity findAreaByTitle(String title);
+	
+	void deleteAreaById(int id);
 }

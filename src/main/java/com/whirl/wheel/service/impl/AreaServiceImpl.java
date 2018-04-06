@@ -39,4 +39,9 @@ public class AreaServiceImpl implements AreaService{
 		return areaRepository.findAreaByTitle(title);
 	}
 
+	@Override
+	public void deleteAreaById(int id) {
+		areaRepository.delete(id);
+	}
+
 }

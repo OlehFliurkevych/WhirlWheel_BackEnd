@@ -15,4 +15,6 @@ public interface NewsService {
 	NewsEntity findNewsById(int id);
 
 	void uploadImage(MultipartFile file, int newsId);
+	
+	void deleteNewsById(int id);
 }

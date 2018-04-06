@@ -59,5 +59,10 @@ public class ConcernServiceImpl implements ConcernService{
 		concernRepository.save(concern);
 	}
 
+	@Override
+	public void deleteConcernById(int id) {
+		concernRepository.delete(id);
+	}
+
 	
 }

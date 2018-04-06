@@ -49,4 +49,10 @@ public class NewsServiceImpl implements NewsService{
 		news.setImagePath(path);
 		newsRepository.save(news);
 	}
+
+
+	@Override
+	public void deleteNewsById(int id) {
+		newsRepository.delete(id);
+	}
 }

@@ -22,8 +22,25 @@
                         <div id="panelHome" class="panel panel-primary">
                             <div class="panel-heading">Home</div>
                             <div class="panel-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
+                              	<div class="container-fluid">
+                                    <div class="row">
+                                        <p style="color: #2d2d2d;font-size: 20px;text-align: center;">Welcome to <span style="color: #f74d12;">Whirl Wheel's</span> admin page!
+                                        </p>
+                                    </div>
+                                    <div class="row">
+                                        <p style="font-size: 18px;text-align: left;margin-left: 10%;">
+                                            You can:
+                                        </p>
+                                        <ul style="font-size: 18px;text-align: left;margin-left: 10%;">
+                                            <li>add item(news, concern, model, brand, country, area);</li>
+                                            <li>view items of each of objects;</li>
+                                            <li>delete item(news, concern, model, brand, country, area);</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger" style="font-size: 18px;text-align: center;">
+                                    <strong> Please enter verified information!</strong>    
+                                </div>
                             </div>
                         </div>
                         <div id="panelView" class="panel panel-primary">
@@ -124,7 +141,7 @@
                                                                 <th>${b.titleBrand}</th>
                                                                 <th>${b.concern.titleConcern}</th>
                                                                 <th>${b.country.titleCountry}</th>
-                                                                <th>${b.area.getTitleArea}</th>
+                                                                <th>${b.area.titleArea}</th>
                                                                 <th>${b.description}</th>
                                                                 <th>${b.imagePath}</th>
                                                             </tr>
@@ -229,7 +246,6 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fas fa-plus-square"></i> Add</h3>
                                 <span class="pull-right">
-                        <!-- Tabs -->
                         <ul class="nav panel-tabs">
                             <li class="active"><a href="#newsPanel" data-toggle="tab">News</a></li>
                             <li><a href="#concernPanel" data-toggle="tab">Concern</a></li>
@@ -245,49 +261,270 @@
                                     <div class="tab-pane active" id="newsPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                               <a href="${rootUrl}/news/form"> <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add news</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add news</h3>
                                             </div>
-                                            
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                    <form:form action="${rootURL}/news/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		 modelAttribute="newsModel">
+                                                        <div class="form-group">
+                                                            <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="link" class="control-label col-md-3 col-sm-3">Link</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="imagePath" class="control-label col-md-3 col-sm-3">Image</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <button type="submit" class="btn btn-success">Add</button>
+                                                            </div> 
+                                                        </div>
+                                                    </form:form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="concernPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <a href="${rootUrl}/concern/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add concern</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add concern</h3>
                                             </div>
-                                           
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                    <form:form action="${pageContext.request.contextPath}/concern/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="concernModel">
+                                                        <div class="form-group">
+                                                            <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                            </div>
+                                                        </div>
+                                                       <div class="form-group">
+                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control">
+                                									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
+                           										 </form:select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <input path="imagePath" name="image" type="file" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <input type="submit" class="btn btn-success" value="Add">
+                                                            </div>
+                                                        </div>
+
+                                                    </form:form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="brandPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <a href="${rootUrl}/brand/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add brand</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add brand</h3>
                                             </div>
-                                            
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                    <form:form action="${pageContext.request.contextPath}/brand/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="brandModel">
+                                                        <div class="form-group">
+                                                            <form:label path="titleBrand" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:input path="titleBrand" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="control-label col-md-3 col-sm-3">Concern</label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:select items="${listConcerns}" itemLabel="titleConcern" itemValue="id" path="concern" class="form-control">
+                           										</form:select>
+                                                            </div>
+                                                        </div>
+                                                       <div class="form-group">
+                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control">						 
+                           										 </form:select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Area</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:select items="${listAreas}" itemLabel="titleArea" itemValue="id"  path="area" class="form-control">						 
+                           										 </form:select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="imagePath" name="image" for="image" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <input type="submit" class="btn btn-success" value="Add">
+                                                            </div>
+                                                        </div>
+
+                                                    </form:form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="modelPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <a href="${rootUrl}/model/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add model</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add model</h3>
                                             </div>
-                                            
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                   <form:form action="${rootURL}/model/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		enctype="multipart/form-data"
+                                                    		modelAttribute="modelModel">
+                                                        <div class="form-group">
+                                                            <form:label path="titleModel" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:input path="titleModel" type="text" class="form-control" placeholder="Enter model title"></form:input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="brand" class="control-label col-md-3 col-sm-3">Brand</form:label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:select items="${listBrands}" itemLabel="titleBrand" itemValue="id" path="brand" class="form-control">
+                                									
+                            									</form:select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:textarea path="description" class="form-control" cols="30" rows="10" placeholder="Enter description about model"></form:textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <form:label path="imagePath" name="image" class="control-label col-md-3 col-sm-3">Image
+                                                        </form:label>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <button type="submit" class="btn btn-success">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form:form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="countryPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <a href="${rootUrl}/country/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add country</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add country</h3>
                                             </div>
-                                           
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                    	<form:form action="${rootURL}/country/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		modelAttribute="countryModel">
+                                                        <div class="form-group">
+                                                            <form:label path="titleCountry" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:input class="form-control" placeholder="Enter country title" path="titleCountry"></form:input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <button type="submit"  class="btn btn-success">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form:form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="areaPanel">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <a href="${rootUrl}/area/form"><h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add area</h3></a>
+                                                <h3 style="text-align:center;margin-bottom: 30px;font-size: 35px;">Form for add area</h3>
                                             </div>
-                                            
+                                            <div class="row">
+
+                                                <div class="col-md-8 col-lg-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                                    	<form:form action="${rootURL}/area/save" 
+                                                    		class="form-horizontal"
+                                                    		method="POST"
+                                                    		modelAttribute="areaModel">
+                                                        <div class="form-group">
+                                                            <form:label path="titleArea" class="control-label col-md-3 col-sm-3">Title </form:label>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <form:input type="text" class="form-control" placeholder="Enter area title" path="titleArea"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-3">
+                                                                <button type="submit" class="btn btn-success">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </form:form>
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +547,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>
-                                                                <th>Headlind</th>
+                                                                <th>Headline</th>
                                                                 <th>Description</th>
                                                                 <th>Link</th>
                                                                 <th>Id Image</th>
@@ -318,30 +555,16 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <c:forEach items="${listNews}" var="n">
                                                             <tr>
-                                                                <th>1</th>
-                                                                <th>Some head</th>
-                                                                <th>Some description</th>
-                                                                <th>Link</th>
-                                                                <th>Id Image</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                                <th>${n.id}</th>
+                                                                <th>${n.headline}</th>
+                                                                <th>${n.description}</th>
+                                                                <th>${n.link}</th>
+                                                                <th>${n.imagePath}</th>
+                                                                <th><a href="${pageContext.request.contextPath}/news/${n.id}/delete"><i class="fa fa-minus-square"></i></a></th>
                                                             </tr>
-                                                            <tr>
-                                                                <th>2</th>
-                                                                <th>Some head2</th>
-                                                                <th>Some description2</th>
-                                                                <th>Link2</th>
-                                                                <th>Id Image2</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>3</th>
-                                                                <th>Some head3</th>
-                                                                <th>Some description3</th>
-                                                                <th>Link3</th>
-                                                                <th>Id Image3</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
-                                                            </tr>
+                                                         </c:forEach>   
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -367,30 +590,16 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <c:forEach items="${listConcerns}" var="c">
                                                             <tr>
-                                                                <th>Id 1</th>
-                                                                <th>Title1</th>
-                                                                <th>Country1</th>
-                                                                <th>Description1</th>
-                                                                <th>Path to image1</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
+                                                                <th>${c.id}</th>
+                                                                <th>${c.titleConcern}</th>
+                                                                <th>${c.country.titleCountry}</th>
+                                                                <th>${c.description}</th>
+                                                                <th>${c.imagePath}</th>
+                                                                <th><a href="${pageContext.request.contextPath}/concern/${c.id}/delete"><i class="fa fa-minus-square"></i></a></th>
                                                             </tr>
-                                                            <tr>
-                                                                <th>Id3</th>
-                                                                <th>Title3</th>
-                                                                <th>Country3</th>
-                                                                <th>Descriptio3</th>
-                                                                <th>Path to imag3</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Id4</th>
-                                                                <th>Title4</th>
-                                                                <th>Country4</th>
-                                                                <th>Description4</th>
-                                                                <th>Path to image4</th>
-                                                                <th><i class="fa fa-minus-square"></i></th>
-                                                            </tr>
+                                                          </c:forEach>  
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -403,7 +612,37 @@
                                                 </h4>
                                             </div>
                                             <div id="tableBrandsDelete" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Concern</th>
+                                                                <th>Country</th>
+                                                                <th>Area</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listBrands}" var="b">
+                                                            <tr>
+                                                                <th>${b.id}</th>
+                                                                <th>${b.titleBrand}</th>
+                                                                <th>${b.concern.titleConcern}</th>
+                                                                <th>${b.country.titleCountry}</th>
+                                                                <th>${b.area.titleArea}</th>
+                                                                <th>${b.description}</th>
+                                                                <th>${b.imagePath}</th>
+																<th><a href="${pageContext.request.contextPath}/brand/${b.id}/delete"><i class="fa fa-minus-square"></i></a></th>
+                                                                
+                                                            </tr>
+                                                          </c:forEach>  
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -413,7 +652,32 @@
                                                 </h4>
                                             </div>
                                             <div id="tableModelsDelete" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Brand</th>
+                                                                <th>Description</th>
+                                                                <th>Path to image</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listModels}" var="m">
+                                                            <tr>
+                                                                <th>${m.id}</th>
+                                                                <th>${m.titleModel}</th>
+                                                                <th>${m.brand.titleBrand}</th>
+                                                                <th>${m.description}</th>
+                                                                <th>${m.imagePath}</th>
+                                                                <th><a href="${pageContext.request.contextPath}/model/${m.id}/delete"><i class="fa fa-minus-square"></i></a></th>
+                                                            </tr>
+                                                          </c:forEach>  
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -423,7 +687,26 @@
                                                 </h4>
                                             </div>
                                             <div id="tableAreasDelete" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listAreas}" var="a">
+                                                            <tr>
+                                                                <th>${a.id}</th>
+                                                                <th>${a.titleArea}</th>
+                                                                <th><a href="${pageContext.request.contextPath}/area/${a.id}/delete"><i class="fa fa-minus-square"></i></a></th>
+                                                            </tr>
+                                                         </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-info">
@@ -433,7 +716,26 @@
                                                 </h4>
                                             </div>
                                             <div id="tableCountriesDelete" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                                <div class="panel-body">
+                                                	<table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Title</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${listCountries}" var="c">
+                                                            <tr>
+                                                                <th>${c.id}</th>
+                                                                <th>${c.titleCountry}</th>
+                                                                <th><a href="${pageContext.request.contextPath}/country/${c.id}/delete"><i class="fa fa-minus-square"></i></a></th>
+                                                            </tr>
+                                                         </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

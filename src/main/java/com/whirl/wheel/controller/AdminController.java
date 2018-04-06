@@ -96,6 +96,7 @@ public class AdminController {
 		model.addAttribute("listModels",modelService.findAllModels());
 		model.addAttribute("listCountries",countryService.findAllCountries());
 		model.addAttribute("listAreas",areaService.findAllAreas());
+		model.addAttribute("listNews",newsService.findAllNews());
 		return "admin/add-forms";
 	}
 	

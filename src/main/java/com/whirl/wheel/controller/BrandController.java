@@ -3,10 +3,12 @@ package com.whirl.wheel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,25 +49,36 @@ public class BrandController {
 		this.concernService = concernService;
 	}
 	
-	@GetMapping("/form")
-	public String showForm(Model model) {
-		model.addAttribute("brandModel",new BrandEntity());
-		return "brand/add-brand";
-	}
+//	@GetMapping("/form")
+//	public String showForm(Model model) {
+//		model.addAttribute("brandModel",new BrandEntity());
+//		return "brand/add-brand";
+//	}
 	
 	@PostMapping("/save")
 	public String saveBrand(
 			@ModelAttribute("brandModel")BrandEntity brand,
-			@RequestParam("image")MultipartFile image) {
+			@RequestParam("image")MultipartFile image,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
 		if(image!=null&&image.getSize()>0) {
 			System.out.println("went to method");
 			brandService.saveBrand(brand);
 			System.out.println("save brand");
 			brandService.uploadImage(image, brand.getId());
 			System.out.println("upload image!END!");
-			return "redirect:/brand/form";
+			return "redirect:/admin/profile";
 		}
-		return "brand/add-brand";
+		return "admin/add-forms";
+	}
+	
+	@GetMapping("/{b.id}/delete")
+	public String deleteBrand(
+			@PathVariable("b.id")int brandId) {
+		brandService.deleteBrandById(brandId);
+		return "redirect:/admin/profile";
 	}
 	
 }

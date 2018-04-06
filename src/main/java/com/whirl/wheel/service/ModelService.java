@@ -17,4 +17,6 @@ public interface ModelService {
 	ModelEntity findModelByTitle(String title);
 	
 	void uploadImage(MultipartFile file,int modelId);
+	
+	void deleteModelById(int id);
 }

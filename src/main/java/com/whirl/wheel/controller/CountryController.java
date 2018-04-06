@@ -1,12 +1,16 @@
 package com.whirl.wheel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,16 +44,31 @@ public class CountryController {
 		this.countryService = countryService;
 	}
 	
-	@GetMapping("/form")
-	public String showForm(Model model) {
-		model.addAttribute("countryModel",new CountryEntity());
-		return "country/add-country";
-	}
+//	@GetMapping("/form")
+//	public String showForm(Model model) {
+//		model.addAttribute("countryModel",new CountryEntity());
+//		return "country/add-country";
+//	}
 	
 	@PostMapping("/save")
 	public String saveCountry(
-			@ModelAttribute("countryModel")CountryEntity country) {
+			@ModelAttribute("countryModel")@Valid CountryEntity country,
+			Model model,
+			BindingResult result) {
+		if(result.hasErrors()) {
+//			model.addAttribute("messageForAdd","You don't add country");
+			return "redirect:/admin/profile";
+		}
 		countryService.saveCountry(country);
-		return "redirect:/country/form";
+//		model.addAttribute("messageForAdd","You successfully add country");
+		return "redirect:/admin/profile";
 	}
+	
+	@GetMapping("/{c.id}/delete")
+	public String deleteCountry(
+			@PathVariable("c.id")int countryId) {
+		countryService.deleteCountryById(countryId);
+		return "redirect:/admin/profile";
+	}
+	
 }

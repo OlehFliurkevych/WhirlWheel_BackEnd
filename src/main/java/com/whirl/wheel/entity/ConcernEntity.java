@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.Getter;
@@ -25,9 +29,14 @@ import lombok.Setter;
 @Getter @Setter
 public class ConcernEntity extends BaseEntity{
 
+	@NotEmpty
+	@Size(min=3,message="Title concern must be longer than 3 symbols")
+	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_concern")
 	private String titleConcern;
 	
+	@NotEmpty
+	@Size(min=50,message="Description must be longer than 50 symbols")
 	@Column(columnDefinition="text")
 	private String description;
 	
@@ -35,6 +44,7 @@ public class ConcernEntity extends BaseEntity{
 //	@JoinColumn(name="image_id")
 //	private UploadImageEntity imageForConcern;
 	
+	@NotEmpty
 	@Column(name="image_path")
 	private String imagePath;
 	
@@ -46,7 +56,7 @@ public class ConcernEntity extends BaseEntity{
 	@JoinColumn(name="country_id")
 	private CountryEntity country;
 	
-	@OneToMany(mappedBy="concern")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="concern")
 	private List<BrandEntity> brands=new ArrayList<>();
 	
 }

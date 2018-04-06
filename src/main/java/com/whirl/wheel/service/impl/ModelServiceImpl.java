@@ -56,5 +56,10 @@ public class ModelServiceImpl implements ModelService{
 		modelRepository.save(model);
 	}
 
+	@Override
+	public void deleteModelById(int id) {
+		modelRepository.delete(id);
+	}
+
 	
 }
