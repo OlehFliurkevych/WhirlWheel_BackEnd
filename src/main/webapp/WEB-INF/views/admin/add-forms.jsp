@@ -1,5 +1,11 @@
 <%@ include file="/WEB-INF/taglib.jsp" %>
-
+<style>
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
+</style>
 <a href="${rootUrl}/concern/form">Form for concern</a>
 
 <div class="container-fluid">
@@ -274,25 +280,25 @@
                                                         <div class="form-group">
                                                             <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input>
+                                                                <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input><form:errors path="headline" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea>
+                                                                <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea><form:errors path="description" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="link" class="control-label col-md-3 col-sm-3">Link</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea>
+                                                                <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea><form:errors path="link" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="imagePath" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input><form:errors path="imagePath" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -321,13 +327,13 @@
                                                         <div class="form-group">
                                                             <form:label path="titleConcern" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                                <form:input path="titleConcern" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input><form:errors path="titleConcern" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                        <div class="form-group">
                                                             <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control">
+                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control"><form:errors path="country" cssClass="error"/>
                                 									<%-- <form:option value="NULL" disabled selected >Select country</form:option> --%>
                            										 </form:select>
                                                             </div>
@@ -335,14 +341,14 @@
                                                         <div class="form-group">
                                                             <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea><form:errors path="description" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="imagePath" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control"/>
+                                                                <input path="imagePath" name="image" type="file" class="form-control"/><form:errors path="imagePath" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -372,41 +378,41 @@
                                                         <div class="form-group">
                                                             <form:label path="titleBrand" for="title" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:input path="titleBrand" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input>
+                                                                <form:input path="titleBrand" type="text" class="form-control" placeholder="Enter concern title" name="title"></form:input><form:errors path="titleBrand" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="" class="control-label col-md-3 col-sm-3">Concern</label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:select items="${listConcerns}" itemLabel="titleConcern" itemValue="id" path="concern" class="form-control">
+                                                                <form:select items="${listConcerns}" itemLabel="titleConcern" itemValue="id" path="concern" class="form-control"><form:errors path="concern" cssClass="error"/>
                            										</form:select>
                                                             </div>
                                                         </div>
                                                        <div class="form-group">
                                                             <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Country</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control">						 
+                                                                <form:select items="${listCountries}" itemLabel="titleCountry" itemValue="id"  path="country" class="form-control"><form:errors path="country" cssClass="error"/>						 
                            										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="country" for="country" class="control-label col-md-3 col-sm-3">Area</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:select items="${listAreas}" itemLabel="titleArea" itemValue="id"  path="area" class="form-control">						 
+                                                                <form:select items="${listAreas}" itemLabel="titleArea" itemValue="id"  path="area" class="form-control"><form:errors path="area" cssClass="error"/>						 
                            										 </form:select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="description" for="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea>
+                                                                <form:textarea path="description" class="form-control" id="" cols="30" rows="10" placeholder="Enter description about concern"></form:textarea><form:errors path="description" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="imagePath" name="image" for="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input><form:errors path="imagePath" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -436,13 +442,13 @@
                                                         <div class="form-group">
                                                             <form:label path="titleModel" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:input path="titleModel" type="text" class="form-control" placeholder="Enter model title"></form:input>
+                                                                <form:input path="titleModel" type="text" class="form-control" placeholder="Enter model title"></form:input><form:errors path="titleModel" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="brand" class="control-label col-md-3 col-sm-3">Brand</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:select items="${listBrands}" itemLabel="titleBrand" itemValue="id" path="brand" class="form-control">
+                                                                <form:select items="${listBrands}" itemLabel="titleBrand" itemValue="id" path="brand" class="form-control"><form:errors path="brand" cssClass="error"/>
                                 									
                             									</form:select>
                                                             </div>
@@ -450,14 +456,14 @@
                                                         <div class="form-group">
                                                             <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:textarea path="description" class="form-control" cols="30" rows="10" placeholder="Enter description about model"></form:textarea>
+                                                                <form:textarea path="description" class="form-control" cols="30" rows="10" placeholder="Enter description about model"></form:textarea><form:errors path="description" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="imagePath" name="image" class="control-label col-md-3 col-sm-3">Image
                                                         </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input path="imagePath" name="image" type="file" class="form-control"></input>
+                                                                <input path="imagePath" name="image" type="file" class="form-control"></input><form:errors path="imagePath" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -485,7 +491,7 @@
                                                         <div class="form-group">
                                                             <form:label path="titleCountry" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:input class="form-control" placeholder="Enter country title" path="titleCountry"></form:input>
+                                                                <form:input class="form-control" placeholder="Enter country title" path="titleCountry"></form:input><form:errors path="titleCountry" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -510,10 +516,11 @@
                                                     		class="form-horizontal"
                                                     		method="POST"
                                                     		modelAttribute="areaModel">
+                                                    		
                                                         <div class="form-group">
                                                             <form:label path="titleArea" class="control-label col-md-3 col-sm-3">Title </form:label>
                                                             <div class="col-md-6 col-sm-6">
-                                                                <form:input type="text" class="form-control" placeholder="Enter area title" path="titleArea"/>
+                                                                <form:input type="text" class="form-control" placeholder="Enter area title" path="titleArea"/><form:errors path="titleArea" cssClass="error"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -637,7 +644,6 @@
                                                                 <th>${b.description}</th>
                                                                 <th>${b.imagePath}</th>
 																<th><a href="${pageContext.request.contextPath}/brand/${b.id}/delete"><i class="fa fa-minus-square"></i></a></th>
-                                                                
                                                             </tr>
                                                           </c:forEach>  
                                                         </tbody>

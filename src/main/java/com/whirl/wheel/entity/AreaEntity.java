@@ -28,7 +28,7 @@ import lombok.Setter;
 @Table(name="area",indexes=@Index(columnList="title_area"))
 public class AreaEntity extends BaseEntity{
 	
-	@NotEmpty
+	@NotEmpty(message="Title area can't be empty")
 	@Size(min=3,message="Title area must be longer then 3 symbols")
 	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_area")

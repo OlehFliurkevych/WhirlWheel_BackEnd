@@ -57,7 +57,7 @@ public class CountryController {
 			BindingResult result) {
 		if(result.hasErrors()) {
 //			model.addAttribute("messageForAdd","You don't add country");
-			return "redirect:/admin/profile";
+			return "admin/add-forms";
 		}
 		countryService.saveCountry(country);
 //		model.addAttribute("messageForAdd","You successfully add country");

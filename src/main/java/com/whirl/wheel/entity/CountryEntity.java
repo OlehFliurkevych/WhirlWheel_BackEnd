@@ -33,15 +33,15 @@ import lombok.Setter;
 public class CountryEntity extends BaseEntity{
 
 
-	@NotEmpty
+	@NotEmpty(message="Title country can't be empty")
 	@Pattern(regexp="^[A-Za-z]+$")
 	@Size(min=3,message="Country must be longer than 3 symbols")
 	@Column(name="title_country")
 	private String titleCountry;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="country")
+	@OneToMany(cascade= {CascadeType.ALL,CascadeType.MERGE},mappedBy="country")
 	private List<BrandEntity> brands=new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="country")
+	@OneToMany(cascade= {CascadeType.ALL,CascadeType.MERGE},mappedBy="country")
 	private List<ConcernEntity> concerns=new ArrayList<>();
 }

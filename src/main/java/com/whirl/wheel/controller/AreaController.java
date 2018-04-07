@@ -1,9 +1,12 @@
 package com.whirl.wheel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -41,9 +44,9 @@ public class AreaController {
 	
 	@PostMapping("/save")
 	public String saveArea(
-			@ModelAttribute("areaModel")AreaEntity area,
-			Model model,
-			BindingResult result) {
+			@Valid @ModelAttribute("areaModel")AreaEntity area,
+			BindingResult result
+			) {
 		if(result.hasErrors()) {
 			return "admin/add-forms";
 		}
@@ -53,7 +56,8 @@ public class AreaController {
 	
 	@GetMapping("/{a.id}/delete")
 	public String deleteArea(
-			@PathVariable("a.id")int areaId) {
+			@PathVariable("a.id")int areaId
+			) {
 		areaService.deleteAreaById(areaId);
 		return "redirect:/admin/profile";
 	}

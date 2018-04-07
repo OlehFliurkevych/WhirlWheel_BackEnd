@@ -10,7 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
-
+<style>
+	.error{
+	color:red;
+}
+</style>
 <c:choose>
 	<c:when test="${title == null}">
 		<tiles:putAttribute name="title" value="App title" />

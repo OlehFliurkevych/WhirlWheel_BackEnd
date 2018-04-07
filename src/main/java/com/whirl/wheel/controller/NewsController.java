@@ -1,5 +1,7 @@
 package com.whirl.wheel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,13 +53,17 @@ public class NewsController {
 //		return "news/add-news";
 //	}
 	
+	
 	@PostMapping("/save")
 	public String saveNews(
 			Model model,
-			@ModelAttribute("newsModel")NewsEntity news,
+			@ModelAttribute("newsModel")@Valid NewsEntity news,
 			@RequestParam("image")MultipartFile image,
 			BindingResult result) {
+		System.out.println("kjhkhk");
 		if(result.hasErrors()) {
+			System.out.println("not valid");
+			System.out.println(result.getAllErrors());
 //			model.addAttribute("messageForAdd","You don't add news");
 			return "admin/add-forms";
 		}

@@ -108,15 +108,21 @@ public class ConcernController {
 	
 		
 	@PostMapping("/save")
-	public String saveConcernToDB(@ModelAttribute("concernModel")ConcernEntity concern,
+	public String saveConcernToDB(@ModelAttribute("concernModel")@Valid ConcernEntity concern,
 			@RequestParam("image")MultipartFile image,
 			BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/add-forms";
+		}
+		if(image!=null&&image.getSize()>0) {
 			System.out.println("went to method");
 			concernService.saveConcern(concern);
 			System.out.println("save concern");
 			concernService.uploadImage(image, concern.getId());
 			System.out.println("upload image!END!");
 			return "redirect:/admin/profile";
+		}
+		return "admin/add-forms";	
 	}
 	
 	@GetMapping("/{c.id}/delete")

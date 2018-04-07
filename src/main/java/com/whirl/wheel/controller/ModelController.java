@@ -1,5 +1,7 @@
 package com.whirl.wheel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +54,7 @@ public class ModelController {
 	@PostMapping("/save")
 	public String saveModel(
 			Model model,
-			@ModelAttribute("modelModel")ModelEntity modelEntity,
+			@ModelAttribute("modelModel")@Valid ModelEntity modelEntity,
 			@RequestParam("image")MultipartFile image,
 			BindingResult result) {
 		if(result.hasErrors()) {

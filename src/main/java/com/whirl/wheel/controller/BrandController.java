@@ -1,5 +1,7 @@
 package com.whirl.wheel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +59,7 @@ public class BrandController {
 	
 	@PostMapping("/save")
 	public String saveBrand(
-			@ModelAttribute("brandModel")BrandEntity brand,
+			@ModelAttribute("brandModel")@Valid BrandEntity brand,
 			@RequestParam("image")MultipartFile image,
 			BindingResult result) {
 		if(result.hasErrors()) {

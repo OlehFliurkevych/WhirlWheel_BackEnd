@@ -32,24 +32,20 @@ import lombok.Setter;
 @Table(name="brand",indexes=@Index(columnList="title_brand"))
 public class BrandEntity extends BaseEntity {
 
-	@NotEmpty
+	@NotEmpty(message="Brand title can't be empty")
 	@Size(min=3,message="Title brand must be longer than 3 symbols")
 	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_brand")
 	private String titleBrand;
 	
-	@NotEmpty
+	@NotEmpty(message="Description can't be empty")
 	@Size(min=50,message="Description must be longer than 50 symbols")
 	@Column(columnDefinition="text")
 	private String description;
 	
-	@NotEmpty
+//	@NotEmpty
 	@Column(name="image_path")
 	private String imagePath;
-	
-//	@OneToOne
-//	@JoinColumn(name="image_id")
-//	private UploadImageEntity imageForBrand;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="country_id")
