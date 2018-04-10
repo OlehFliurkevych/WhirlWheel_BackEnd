@@ -17,11 +17,10 @@
             <div class="newsRow row">
             <c:forEach items="${listConcern}" var="n">
                  <div class="col-sm-6 col-md-4 news">
-                    <a style="color:#2d2d2d;" href="#">
+                    <a style="color:#2d2d2d;" href="${rootURL}/concern/${n.id}/inf">
                         <div class="feature-box">
                             <img class="img-responsive" src="${n.imagePath}" alt="">
                             <h4>${n.titleConcern}</h4>
-                            <p>${n.description}</p>
                         </div>
                     </a>
                 </div>
@@ -46,37 +45,7 @@
                     </a>
                 </div>
             </div> --%>
-            <div class="newsRow row">
-                <div class="col-sm-6 col-md-4 news">
-                    <a style="color:#2d2d2d;" href="#">
-                        <div class="feature-box">
-                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
-                            <h4>Great Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 news">
-                    <a style="color:#2d2d2d;" href="#">
-                        <div class="feature-box">
-                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
-                            <h4>Great Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-sm-6 col-md-4 news">
-                    <a style="color:#2d2d2d;" href="#">
-                        <div class="feature-box">
-                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/img/2.jpg" alt="">
-                            <h4>Great Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et, viverra et est.</p>
-                        </div>
-                    </a>
-                </div>
             </div>
-<!--             <hr>-->
             <div style="text-align: center" class="row">
                 <ul class="pagination">
                     <li><a href="#">1</a></li>

@@ -27,9 +27,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
 	
-	<!-- Custom error page
-	<definition name="error" template="/WEB-INF/views/404.jsp" />
- 	-->
+	<!--  Custom error page -->
+	<definition name="error" template="/WEB-INF/views/error.jsp" />
+ 	
  	
 	<!-- Ignore tiles -->
 	<!-- <definition name="login" extends="base">

@@ -47,9 +47,13 @@ public class AreaController {
 			@Valid @ModelAttribute("areaModel")AreaEntity area,
 			BindingResult result
 			) {
+		System.out.println("went to method");
 		if(result.hasErrors()) {
+			System.out.println("has error");
+			System.out.println(result.getErrorCount());
 			return "admin/add-forms";
 		}
+		System.out.println("save area");
 		areaService.saveArea(area);
 		return "redirect:/admin/profile";
 	}

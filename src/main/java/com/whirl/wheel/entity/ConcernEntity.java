@@ -31,7 +31,7 @@ public class ConcernEntity extends BaseEntity{
 
 	@NotEmpty(message="Title concern can not be empty")
 	@Size(min=3,message="Title concern must be longer than 3 symbols")
-	@Pattern(regexp="^[A-Za-z]+$",message="")
+//	@Pattern(regexp="^[A-Za-z]+$",message="")
 	@Column(name="title_concern")
 	private String titleConcern;
 	

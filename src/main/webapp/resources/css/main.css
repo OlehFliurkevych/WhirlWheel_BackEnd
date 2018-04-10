@@ -298,8 +298,7 @@ footer{
 }
 
  .image-aboutus-banner {
-    /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)); */
-    background-image: url(../img/banner3.jpg);
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../img/banner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -329,6 +328,12 @@ footer{
     margin-bottom: 15px;
     font-weight: 600;
 }
+
+ .padding35 {
+    padding: 35px 0 35px;
+}
+
+
 
 .team-content {
     padding: 0px 15px 15px 15px;
@@ -448,6 +453,32 @@ footer{
     to {bottom: 0; opacity: 0;}
 }
 
-.error{
-	color:red;
+.site-btn {
+    font-size: 14px;
+    padding: 13px 30px;
+    border-radius: 5px;
+    border: 1px solid #f74d12 ;
+    min-width: 200px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #f74d12 ;
+    background-color:transparent;
+    transition: all .25s ease-in-out;
+    margin: 10px 0px 10px 0px;
+    
+}
+.site-btn:hover {
+    background: #f74d12 ;
+    border: 1px solid #fff;
+    font-weight:700px;
+    
+    
+}
+
+.bg-blue {
+    background:#d6d6d6;
+    color:#000;
+    margin-bottom: 20px;
 }

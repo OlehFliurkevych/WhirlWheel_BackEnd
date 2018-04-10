@@ -128,7 +128,7 @@
                                             </div>
                                             <div id="tableBrands" class="panel-collapse collapse">
                                                 <div class="panel-body">
-                                                	<table class="table table-hover">
+                                                	<table class="table table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>Id</th>

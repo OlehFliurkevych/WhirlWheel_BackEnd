@@ -23,7 +23,7 @@
 		<tiles:putAttribute name="title" value="${title}" />
 	</c:otherwise>
 </c:choose>
-
+<link rel="SHORTCUT ICON" href="${pageContext.request.contextPath}/resources/img/icon.png" type="image/x-icon" />
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 <jsp:include page="/WEB-INF/include/style-include.jsp" />
 </head>

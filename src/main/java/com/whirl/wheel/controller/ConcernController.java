@@ -131,4 +131,13 @@ public class ConcernController {
 		concernService.deleteConcernById(concenId);
 		return "redirect:/admin/profile";
 	}
+	
+	@GetMapping("/{concernModel.id}/inf")
+	public String searchConcern(
+			@PathVariable("concernModel.id")int concernId,
+			Model model) {
+		ConcernEntity concernEntity=concernService.findConcernById(concernId);
+		model.addAttribute("findedConcern",concernEntity);
+		return "concern/concern-inf";
+	}
 }

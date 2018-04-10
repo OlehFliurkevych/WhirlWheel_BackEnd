@@ -87,4 +87,12 @@ public class NewsController {
 		newsService.deleteNewsById(newsId);
 		return "redirect:/admin/profile";
 	}
+	
+	@GetMapping("/{n.id}/inf")
+	public String showOneNews(
+			Model model,
+			@PathVariable("n.id")int newsId) {
+		
+		return "news/news-inf";
+	}
 }
