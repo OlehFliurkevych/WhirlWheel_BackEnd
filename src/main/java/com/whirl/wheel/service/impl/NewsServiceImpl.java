@@ -3,6 +3,9 @@ package com.whirl.wheel.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,5 +57,15 @@ public class NewsServiceImpl implements NewsService{
 	@Override
 	public void deleteNewsById(int id) {
 		newsRepository.delete(id);
+	}
+
+
+	@Override
+	public Page<NewsEntity> getPageableNews(int pageNumber, int pageSize, String sort, String sortByField) {
+		PageRequest request=new PageRequest(pageNumber-1,
+				pageSize,
+				sort.toUpperCase().equals("ASC") ? Sort.Direction.ASC:Sort.Direction.DESC,
+				sortByField);
+		return newsRepository.findAll(request);
 	}
 }

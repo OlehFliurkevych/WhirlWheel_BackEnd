@@ -6,7 +6,6 @@
 	font-weight: bold;
 }
 </style>
-<a href="${rootUrl}/concern/form">Form for concern</a>
 
 <div class="container-fluid">
             <div data-spy="scroll" style="position: relative;" data-target="#MyScrollspy" data-offset="20" class="container-fluid">
@@ -281,24 +280,28 @@
                                                             <form:label path="headline" for="" class="control-label col-md-3 col-sm-3">Headlind </form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:input type="text" path="headline" class="form-control" placeholder="Enter news headlings"></form:input><form:errors path="headline" cssClass="error"/>
+                                                                <p class="help-block">Headline should be longer than 10 characters</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="description" class="control-label col-md-3 col-sm-3">Description</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:textarea path="description" name="" class="form-control" cols="30" rows="10" placeholder="Enter description about news"></form:textarea><form:errors path="description" cssClass="error"/>
+                                                            	<p class="help-block">Description should be longer than 50 characters</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="link" class="control-label col-md-3 col-sm-3">Link</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <form:textarea path="link" class="form-control" cols="30" rows="5" placeholder="Enter link"></form:textarea><form:errors path="link" cssClass="error"/>
+                                                            	<p class="help-block">Link should be longer than 15 characters</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <form:label path="imagePath" class="control-label col-md-3 col-sm-3">Image</form:label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                                 <input path="imagePath" name="image" type="file" class="form-control"></input><form:errors path="imagePath" cssClass="error"/>
+                                                            	<p class="help-block">You must to choose image</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

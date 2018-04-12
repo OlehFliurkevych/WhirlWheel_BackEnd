@@ -44,23 +44,15 @@ public class CountryController {
 		this.countryService = countryService;
 	}
 	
-//	@GetMapping("/form")
-//	public String showForm(Model model) {
-//		model.addAttribute("countryModel",new CountryEntity());
-//		return "country/add-country";
-//	}
-	
 	@PostMapping("/save")
 	public String saveCountry(
 			@ModelAttribute("countryModel")@Valid CountryEntity country,
 			Model model,
 			BindingResult result) {
 		if(result.hasErrors()) {
-//			model.addAttribute("messageForAdd","You don't add country");
 			return "admin/add-forms";
 		}
 		countryService.saveCountry(country);
-//		model.addAttribute("messageForAdd","You successfully add country");
 		return "redirect:/admin/profile";
 	}
 	

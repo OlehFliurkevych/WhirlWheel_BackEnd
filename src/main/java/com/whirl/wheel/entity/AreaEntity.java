@@ -24,7 +24,7 @@ import lombok.Setter;
 public class AreaEntity extends BaseEntity{
 	
 //	@NotEmpty(message="Title area can't be empty")
-	@Size(min=3,message="Title area must be longer then 3 symbols")
+//	@Size(min=3,message="Title area must be longer then 3 symbols")
 //	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_area")
 	private String titleArea;

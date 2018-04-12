@@ -7,14 +7,14 @@
                     </div>
                     <div id="form" class="col-lg-4 col-md-4 col-sm-4">
                         <form:form 
-                        	action="${rootURL}/concern/${concernModel.id}/inf?id=${concernModel.id}" 
+                        	action="${rootURL}/concern/inf" 
                        		class="form-horizontal"
                        		modelAttribute="concernModel"
                        		method="GET">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <form:select items="${listConcerns}" itemValue="id" itemLabel="titleConcern" path="id" class="selectConcern form-control input-sm" id="selconcern">
-                                    <option disable value="">Select concern</option>
+                           <form:select items="${listConcerns}" itemValue="id" itemLabel="titleConcern" path="id" class="selectConcern form-control input-sm" id="selconcern">
+                                    <option value="-">Select concern</option>
                               			<%-- <c:forEach items="${listConcerns}" var="c">
                               				<option itemValue="id" itemLabel="titleConcern"></option>
                               			</c:forEach> --%>
@@ -27,17 +27,15 @@
                                 </div>
                             </div>
                             </form:form>
-                            <%-- <form:form 
-                        		action="${rootURl}/brand/${id}/inf" 
+                            <form:form 
+                        		action="${rootURl}/brand/inf" 
                        			class="form-horizontal"
-                       			method="GET">
+                       			method="GET"
+                       			modelAttribute="brandModel">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                           <form:select items="${listBrands}" itemLabel="titleBrand" itemValue="id" path="" class="selectBrand form-control input-sm" name="" id="selbrand">
-                               				<option disable value="">Select brand</option>
-                               			<c:forEach items="${listBrands}" var="b">
-                               				<option item="${b.titleBrand}"></option>
-                               			</c:forEach>
+                           <form:select items="${listBrands}" itemLabel="titleBrand" itemValue="id" path="id" class="selectBrand form-control input-sm" id="selbrand">
+                               				<option value="-">Select brand</option>
                            </form:select>
                                 </div>
                             </div>
@@ -46,18 +44,16 @@
                                     <button type="submit" class="btn btn-default btn-sm">Search brand</button>
                                 </div>
                             </div>
-                            </form:form> --%>
-                           <%--  <form:form 
-                        		action="" 
+                            </form:form>
+                           <form:form 
+                        		action="${rootURL}/model/inf" 
                        			class="form-horizontal"
-                       			method="GET">
+                       			method="GET"
+                       			modelAttribute="modelModel">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <form:select path="" class="selectModel form-control input-sm" id="selmodel">
-                               				<option disable value="">Select model</option>
-                               				<c:forEach items="${listModels}" var="m">
-                               					<option item="${m.titleModel}"></option>
-                               				</c:forEach>
+                                    <form:select items="${listModels}" itemLabel="titleModel" itemValue="id" path="id" class="selectModel form-control input-sm" id="selmodel">
+                               				<option value="-">Select model</option>
                            </form:select>
                                 </div>
                             </div>
@@ -66,7 +62,7 @@
                                     <button type="submit" class="btn btn-default btn-sm">Search model</button>
                                 </div>
                             </div>
-                        </form:form> --%>
+                        </form:form>
                     </div>
                 </div>
             </div>

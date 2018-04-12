@@ -4,9 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -34,13 +32,6 @@ public class AreaController {
 	protected void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(AreaEntity.class, new AreaEditor(areaService));
 	}
-	
-//	@GetMapping("/form")
-//	public String showForm(Model model) {
-//		model.addAttribute("areaModel",new AreaEntity());
-//		return "area/add-area";
-//	}
-	
 	
 	@PostMapping("/save")
 	public String saveArea(

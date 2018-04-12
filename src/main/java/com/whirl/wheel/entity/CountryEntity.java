@@ -33,9 +33,9 @@ import lombok.Setter;
 public class CountryEntity extends BaseEntity{
 
 
-	@NotEmpty(message="Title country can't be empty")
-	@Pattern(regexp="^[A-Za-z]+$")
-	@Size(min=3,message="Country must be longer than 3 symbols")
+//	@NotEmpty(message="Title country can't be empty")
+//	@Pattern(regexp="^[A-Za-z]+$")
+//	@Size(min=3,message="Country must be longer than 3 symbols")
 	@Column(name="title_country")
 	private String titleCountry;
 	

@@ -3,6 +3,7 @@ package com.whirl.wheel.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,15 +42,6 @@ public class ModelController {
 		binder.registerCustomEditor(BrandEntity.class, new BrandEditor(brandService));
 		binder.registerCustomEditor(ModelEntity.class, new ModelEditor(modelService));
 	}
-	
-/*	@GetMapping("/form")
-	public String showForm(Model model) {
-		model.addAttribute("modelModel",new ModelEntity());
-		model.addAttribute("listBrands",brandService.findAllBrands());
-		return "model/add-model";
-	}*/
-	
-	
 
 	@PostMapping("/save")
 	public String saveModel(
@@ -58,7 +50,6 @@ public class ModelController {
 			@RequestParam("image")MultipartFile image,
 			BindingResult result) {
 		if(result.hasErrors()) {
-//			model.addAttribute("messageForAdd","You don't add model");
 			return "admin/add-forms";
 		}
 		if(image!=null&&image.getSize()>0) {
@@ -67,11 +58,9 @@ public class ModelController {
 			System.out.println("save concern");
 			modelService.uploadImage(image, modelEntity.getId());
 			System.out.println("upload image!END!");
-//			model.addAttribute("messageForAdd","You successfully add model"+modelEntity.getTitleModel());
 			return "redirect:/admin/profile";
 			
 		}
-//		model.addAttribute("messageForAdd","You don't add model");
 		return "admin/add-forms";
 	}
 	
@@ -80,5 +69,56 @@ public class ModelController {
 			@PathVariable("m.id")int modelId) {
 		modelService.deleteModelById(modelId);
 		return "redirect:/admin/profile";
+	}
+	
+	@GetMapping("/inf")
+	public String searchModel(
+			@ModelAttribute("modelModel")ModelEntity entity,
+			Model model) {
+		return "redirect:/model/"+entity.getId()+"/inf";
+	}
+	
+	@GetMapping("/{id}/inf")
+	public String showOneModel(
+			@PathVariable("id")int modelId,
+			Model model) {
+		ModelEntity modelE=modelService.findModelById(modelId);
+		model.addAttribute("title",modelE.getTitleModel());
+		model.addAttribute("findedModel",modelE);
+		return "model/model-inf";
+	}
+	
+	
+	@GetMapping("{brandId}/list/pages/{pageNumber}")
+	public String showModelsOfBrand(
+			@PathVariable("brandId")int brandId,
+			@PathVariable("pageNumber") int pageNumber,
+			@RequestParam(value="field",required=false)String field,
+			@RequestParam(value="sort",required=false)String sort,
+			@RequestParam(value="total",required=false)String total,
+			Model model) {
+		int totalPerPage=total!=null? Integer.valueOf(total):6;
+		String sortDirection=sort!=null?sort.toUpperCase():"ASC";
+		String sortByField=field!=null?field:"titleModel";
+		Page<ModelEntity> page=modelService.getPegableModelsOfBrand(
+				pageNumber, 
+				totalPerPage, 
+				sortDirection, 
+				sortByField,
+				brandId);
+		int currentPage=page.getNumber()+1;
+		int begin=Math.max(1, currentPage-6);
+		int end=Math.min(begin+6, page.getNumber());
+		model.addAttribute("title",brandService.findBrandById(brandId).getTitleBrand()+"models");
+		model.addAttribute("sortByField",sortByField);
+		model.addAttribute("sortDirection",sortDirection);
+		model.addAttribute("totalPerPage",totalPerPage);
+		model.addAttribute("currentIndex",currentPage);
+		model.addAttribute("modelsList",page);
+		model.addAttribute("beginIndex",begin);
+		model.addAttribute("endIndex",end);
+		model.addAttribute("brand",brandService.findBrandById(brandId));
+		model.addAttribute("modelsListByPageSize",page.getContent());
+		return "model/model-list";
 	}
 }

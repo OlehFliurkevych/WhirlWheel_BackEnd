@@ -76,10 +76,6 @@ public class AdminController {
 		this.imageService = imageService;
 	}
 
-
-
-
-
 	@GetMapping("/profile")
 	public String showProfile(Model model) {
 		

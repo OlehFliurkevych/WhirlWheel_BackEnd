@@ -26,14 +26,14 @@ import lombok.Setter;
 @Table(name="brand",indexes=@Index(columnList="title_brand"))
 public class BrandEntity extends BaseEntity {
 
-	@NotEmpty(message="Brand title can't be empty")
-	@Size(min=3,message="Title brand must be longer than 3 symbols")
-	@Pattern(regexp="^[A-Za-z]+$")
+//	@NotEmpty(message="Brand title can't be empty")
+//	@Size(min=3,message="Title brand must be longer than 3 symbols")
+//	@Pattern(regexp="^[A-Za-z]+$")
 	@Column(name="title_brand")
 	private String titleBrand;
 	
-	@NotEmpty(message="Description can't be empty")
-	@Size(min=50,message="Description must be longer than 50 symbols")
+//	@NotEmpty(message="Description can't be empty")
+//	@Size(min=50,message="Description must be longer than 50 symbols")
 	@Column(columnDefinition="text")
 	private String description;
 	
@@ -46,11 +46,11 @@ public class BrandEntity extends BaseEntity {
 	private CountryEntity country;
 
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name="concern_id")
 	private ConcernEntity concern;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name="area_id")
 	private AreaEntity area;
 	

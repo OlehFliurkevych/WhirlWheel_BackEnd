@@ -98,6 +98,8 @@ public class BaseController {
 	public String showHomePage(Model model) {
 		model.addAttribute("title","Home");
 		model.addAttribute("concernModel",new ConcernEntity());
+		model.addAttribute("brandModel",new BrandEntity());
+		model.addAttribute("modelModel",new ModelEntity());
 		model.addAttribute("listNews",newsService.findAllNews());
 		model.addAttribute("listConcerns",concernService.findAllConcerns());
 		model.addAttribute("listBrands",brandService.findAllBrands());
@@ -117,12 +119,12 @@ public class BaseController {
 		return "error";
 	}
 	
-	@GetMapping("/news")
+/*	@GetMapping("/news")
 	public String showNews(Model model) {
 		model.addAttribute("listNews",newsService.findAllNews());
 		model.addAttribute("title","News");
 		return "news";
-	}
+	}*/
 	
 	@GetMapping("/aboutus")
 	public String showAboutUsPage(Model model) {

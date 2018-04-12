@@ -3,6 +3,9 @@ package com.whirl.wheel.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +19,6 @@ import com.whirl.wheel.service.CloudinaryService;
 public class BrandServiceImpl implements BrandService{
 
 	private BrandRepository brandRepository;
-	
 	private CloudinaryService cloudinaryService;
 	
 	@Autowired
@@ -24,6 +26,7 @@ public class BrandServiceImpl implements BrandService{
 		this.brandRepository = brandRepository;
 		this.cloudinaryService = cloudinaryService;
 	}
+	
 
 	@Override
 	public void saveBrand(BrandEntity brand) {
@@ -46,7 +49,20 @@ public class BrandServiceImpl implements BrandService{
 	public List<BrandEntity> findBrandsByConcern(int id) {
 		return brandRepository.findBrandsByConcern(id);
 	}
-
+	
+	@Override
+	public Page<BrandEntity> getPegableBrandsOfConcern(int pageNumber, 
+			int pageSize, 
+			String sort, 
+			String sortByField,
+			int concernId) {
+		PageRequest request=new PageRequest(pageNumber-1,
+				pageSize,
+				sort.toUpperCase().equals("ASC") ? Sort.Direction.ASC:Sort.Direction.DESC,
+				sortByField);
+		return brandRepository.findPagebleBrandsByConcernId(concernId, request);
+	}
+	
 	@Override
 	public List<BrandEntity> findAllBrands() {
 		return brandRepository.findAll();
@@ -64,5 +80,8 @@ public class BrandServiceImpl implements BrandService{
 	public void deleteBrandById(int id) {
 		brandRepository.delete(id);
 	}
+
+
+	
 
 }

@@ -29,14 +29,14 @@ import lombok.Setter;
 @Getter @Setter
 public class ConcernEntity extends BaseEntity{
 
-	@NotEmpty(message="Title concern can not be empty")
-	@Size(min=3,message="Title concern must be longer than 3 symbols")
+//	@NotEmpty(message="Title concern can not be empty")
+//	@Size(min=3,message="Title concern must be longer than 3 symbols")
 //	@Pattern(regexp="^[A-Za-z]+$",message="")
 	@Column(name="title_concern")
 	private String titleConcern;
 	
-	@NotEmpty(message="Description can not be empty")
-	@Size(min=50,message="Description must be longer than 50 symbols")
+//	@NotEmpty(message="Description can not be empty")
+//	@Size(min=50,message="Description must be longer than 50 symbols")
 	@Column(columnDefinition="text")
 	private String description;
 	
